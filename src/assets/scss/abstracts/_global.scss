@@ -1,0 +1,15 @@
+.breadcrumb__nav {
+  .breadcrumbs__link {
+    font-size: 18px;
+    &:hover {
+      color: #fe7f02;
+    }
+  }
+  img {
+    width: 15px;
+    height: 15px;
+  }
+  .router-link-active {
+    color: #fe7f02;
+  }
+}
