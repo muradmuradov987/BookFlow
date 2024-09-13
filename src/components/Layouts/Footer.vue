@@ -51,8 +51,8 @@
             </div>
         </div>
         <hr />
-        <div class="container">
-            <p>Powered By Vue BookStore © 2022</p>
+        <div class="container nocopy">
+            <p >Powered By Vue BookStore © 2024</p>
         </div>
     </footer>
 </template>
@@ -134,7 +134,12 @@ footer {
 
     }
 
-
+.nocopy{
+    p{
+        padding: 15px 0;
+        font-weight: 700;
+    }
+}
 
 }
 

@@ -39,15 +39,6 @@
         gap: 30px;
 
         .categories {
-            &:hover {
-                border-bottom-left-radius: 0px;
-                border-bottom-right-radius: 0px;
-
-                .categories__collapse {
-                    display: block;
-                }
-            }
-
             width: 250px;
             z-index: 2;
             padding: 0px 20px;
@@ -107,6 +98,17 @@
                     }
                 }
             }
+
+            &:hover {
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+
+                .categories__collapse {
+                    display: block;
+                }
+            }
+
+
         }
 
         .search__box {

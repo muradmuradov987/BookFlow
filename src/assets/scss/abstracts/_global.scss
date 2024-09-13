@@ -13,3 +13,18 @@
     color: #fe7f02;
   }
 }
+
+.hero__slider {
+  position: relative;
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #00c897;
+    }
+  }
+}

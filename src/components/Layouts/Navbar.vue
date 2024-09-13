@@ -14,7 +14,7 @@
                     <router-link to="/" class="nav__items ">
                         <img class="home_icon" src="../../assets/img/plagins/home.png" alt="">
                     </router-link>
-                    <router-link to="/newbooks" class="nav__items">
+                    <router-link to="/library" class="nav__items">
                         Library
                     </router-link>
                     <router-link to="/best-sellers" class="nav__items">
@@ -81,12 +81,12 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 150px;
+    height: 100px;
     padding: 20px 0px;
 
     .logo {
-        width: 130px;
-        height: 100px;
+        width: 100px;
+        height: 80px;
 
         img {
             width: 100%;
@@ -207,12 +207,12 @@ nav {
 
 @media (max-width: 768px) {
     nav {
-        height: 100px;
+        height: 60px;
         padding: 20px 0px;
 
         .logo {
-            width: 90px;
-            height: 70px;
+            width: 60px;
+            height: 45px;
         }
 
         .navbar__menu {

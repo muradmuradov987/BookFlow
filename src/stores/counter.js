@@ -1,9 +1,19 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import booksData from '../stores/books.json'
+import popularBooksData from '../stores/popularBooks.json'
+import trendBooksData from '../stores/trendBooks.json'
+
 
 export const useCounterStore = defineStore("counter", () => {
   ////////////////////////////STATE////////////////////////////////////////
   const auth = ref(false);
+
+  const books = booksData
+  const popularBooks = popularBooksData
+  const trendBooks = trendBooksData
+
+
   /////////////////////////////////////////////////////////////////////////
   ////////
   ////////
@@ -25,7 +35,9 @@ export const useCounterStore = defineStore("counter", () => {
   return {
     //state
     auth,
-
+    books,
+    popularBooks,
+    trendBooks,
     //actions
   };
 });

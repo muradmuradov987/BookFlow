@@ -25,9 +25,15 @@ const router = createRouter({
       component: () => import('../views/Profile/ForgettenPassword/index.vue')
     },
     {
-      path: '/register',
-      name: 'register',
-      component: () => import('../views/Profile/Register/index.vue')
+      path: '/library',
+      name: 'library',
+      component: () => import('../views/Library.vue')
+    },
+    {
+      path: '/book-detail/:id',
+      name: 'book-detail',
+      component: () => import('../views/BookDetail.vue'),
+      props: true
     },
   ]
 })
