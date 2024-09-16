@@ -2,58 +2,94 @@
     {
         "id": 1,
         "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
+        "name": "Dark Rose",
         "author": "Oscar Wilde",
-        "level": "starter"
+        "level": "Starter",
+        "cat": "Business",
+        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque, blanditiis repellat tenetur inventore ipsum libero nobis exercitationem ea non, repellendus provident porro sunt ratione quas consectetur quasi. Itaque, nam. Voluptatum tempora, tempore facere nisi vitae autem voluptas consequatur veniam aperiam obcaecati, aut nam eos nobis officiis soluta",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Jhon Doe",
+                "star": 5,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Jhon Doe",
+                "star": 1,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     },
     {
         "id": 2,
         "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
+        "name": "Walden",
+        "author": "Oscar Wilde",
+        "level": "Elemantary",
+        "cat": "Business",
+        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque, blanditiis repellat tenetur inventore ipsum libero nobis exercitationem ea non, repellendus provident porro sunt ratione quas consectetur quasi. Itaque, nam. Voluptatum tempora, tempore facere nisi vitae autem voluptas consequatur veniam aperiam obcaecati, aut nam eos nobis officiis soluta",
+        "reviews": [
+            {
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "personName": "Jhon Doe",
+                "star": 5,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "personName": "Jhon Doe",
+                "star": 1,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     },
     {
         "id": 3,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2024-09/Screenshot%202024-09-10%20at%2011.31.05.png?itok=dUZUuRBr",
+        "name": "Indiana Jhones",
         "author": "Oscar Wilde",
-        "level": "starter"
-    },
-    {
-        "id": 4,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
-    },
-    {
-        "id": 5,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
-        "author": "Oscar Wilde",
-        "level": "starter"
-    },
-    {
-        "id": 6,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
-    },
-    {
-        "id": 7,
-        "link": "login",
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
-        "author": "Oscar Wilde",
-        "level": "starter"
-    },
-    {
-        "id": 8,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
+        "level": "Starter",
+        "cat": "Business",
+        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque, blanditiis repellat tenetur inventore ipsum libero nobis exercitationem ea non, repellendus provident porro sunt ratione quas consectetur quasi. Itaque, nam. Voluptatum tempora, tempore facere nisi vitae autem voluptas consequatur veniam aperiam obcaecati, aut nam eos nobis officiis soluta",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Jhon Doe",
+                "star": 5,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Jhon Doe",
+                "star": 1,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     }
 ]
