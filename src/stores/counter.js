@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import booksData from '../stores/books.json'
 import popularBooksData from '../stores/popularBooks.json'
 import trendBooksData from '../stores/trendBooks.json'
+import myBooksData from '../stores/myBooks.json'
 
 
 export const useCounterStore = defineStore("counter", () => {
@@ -12,6 +13,7 @@ export const useCounterStore = defineStore("counter", () => {
   const books = booksData
   const popularBooks = popularBooksData
   const trendBooks = trendBooksData
+  const myBooks = myBooksData
 
 
   /////////////////////////////////////////////////////////////////////////
@@ -38,6 +40,7 @@ export const useCounterStore = defineStore("counter", () => {
     books,
     popularBooks,
     trendBooks,
+    myBooks,
     //actions
   };
 });

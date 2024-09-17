@@ -1,5 +1,4 @@
 <template>
-
     <div class="container">
         <h1 class="book__name">{{ book?.name }}</h1>
         <section class="book__detail-cotainer">
@@ -40,66 +39,13 @@
                     </div>
                     <div class="book__btns">
                         <Secondary>Read online</Secondary>
-                        <Primary>Add to my books</Primary>
+                        <Primary @click="addToMyBokks">Add to my books</Primary>
                     </div>
                 </div>
             </div>
-            <div class="book__detail-bottom">
-                <ul class="tab__nav">
-                    <li @click="selectTab('tab1')" :class="{ 'active__link': choosenTab === 'tab1' }">Reviews
-                        ({{ book?.reviews?.length }})</li>
-                    <li @click="selectTab('tab2')" :class="{ 'active__link': choosenTab === 'tab2' }">Write comment</li>
-                </ul>
-                <div v-if="choosenTab === 'tab1'" class="tab__content">
-                    <div class="person__comments" v-for="item in book?.reviews">
-                        <div class="profile">
-                            <div>
-                                <img src="@/assets/img/plagins/user.png" alt="">
-                            </div>
-                            <h3>{{ item?.personName }}</h3>
-                        </div>
-                        <div class="desciption">
-                            <div>
-                                <div>
-                                    <div class="stars">
-                                        <span v-for="index in 5" :key="index"
-                                            :class="{ 'star': true, 'filled': index <= item?.star }">
-                                            ★
-                                        </span>
-                                    </div>
-                                </div>
-                                <p>{{ item?.date }}</p>
-                            </div>
-                            <p class="desc">{{ item?.comment }}</p>
-                        </div>
-                    </div>
-                    <p v-if="!book?.reviews?.length">No reviews</p>
-                </div>
-                <div v-if="choosenTab === 'tab2'" class="tab__content">
-                    <div class="write__comment">
-                        <div class="comment__item">
-                            <h3>Rating</h3>
-                            <div class="rate__container">
-                                <div v-for="star in 5" class="star"
-                                    :class="{ hover: hoverRating >= star, selected: rating >= star }"
-                                    @mouseenter="handleMouseEnter(star)" @mouseleave="handleMouseLeave"
-                                    @click="handleClick(star)">
-                                    ★
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment__item">
-                            <h3>Your Review</h3>
-                            <textarea placeholder="Your Review" v-model="yourReview"></textarea>
-                        </div>
-                        <div>
-                            <Secondary @click="addReview">Add review</Secondary>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
+            <WriteComment />
         </section>
+
         <section class="smilar__books">
             <h1 class="section__name">The most similar books</h1>
             <div class="book__list">
@@ -119,6 +65,9 @@ import { useCounterStore } from "@/stores/counter";
 import Primary from '@/components/UI/Buttons/Primary.vue';
 import Secondary from '@/components/UI/Buttons/Secondary.vue';
 import BookCard from '@/components/BookCard/index.vue';
+import WriteComment from '@/components/WriteComment/index.vue';
+import Swal from 'sweetalert2';
+
 
 
 const route = useRoute()
@@ -127,63 +76,16 @@ const book = ref(null)
 const bookRate = ref(0)
 const bookId = ref(route.params.id)
 
-
-
 const similarBooks = ref([])
-
-
-const rating = ref(0);
-const hoverRating = ref(0);
-const yourReview = ref("");
-
-
-
-
-//Rate star
-const handleMouseEnter = (value) => {
-    hoverRating.value = value;
-};
-const handleMouseLeave = () => {
-    hoverRating.value = 0;
-};
-const handleClick = (value) => {
-    rating.value = value;
-};
-function addReview() {
-    const today = new Date();
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    };
-    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(today);
-    let obj = {
-        "personName": "Username",
-        "star": rating.value,
-        "date": formattedDate,
-        "comment": yourReview.value
-    }
-    book.value.reviews.unshift(obj)
-    rating.value = 0
-    yourReview.value = ""
-}
-
-
-
 
 //AllData
 function getAllData(id) {
-    const bookId = parseInt(route.params.id)
-    book.value = myStore.books.find(item => item.id === bookId)
+    const routeId = parseInt(route.params.id)
+    book.value = myStore.books.find(item => item.id === routeId)
     calculateAverageStarValue();
     getSimilarBooks()
 }
 
-//Write comment tab
-const choosenTab = ref('tab1')
-function selectTab(tab) {
-    choosenTab.value = tab
-}
 
 //Review stars
 function calculateAverageStarValue() {
@@ -195,13 +97,57 @@ function calculateAverageStarValue() {
     bookRate.value = Math.round(averageStarValue);
 }
 
+
+
+
+// Add to My Bokks
+function addToMyBokks() {
+
+    const exists = myStore.myBooks.some(obj => obj.id === book.value.id);
+
+    if (myStore.auth) {
+        if (exists) {
+            Swal.fire({
+                title: 'Already Added',
+                text: 'This book is already in your favorites. You cannot add it again.',
+                icon: 'warning',
+                confirmButtonColor: '#00c897',
+            });
+        } else {
+            myStore.myBooks.unshift(book.value)
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "The book added",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
+    } else {
+        Swal.fire({
+            title: 'Login Required!',
+            text: 'If you want to save your books, you must log in first.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#00c897',
+            confirmButtonText: 'Go to Login',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: 'red',
+            preConfirm: () => {
+                window.location.href = '/login';
+            }
+        });
+
+    }
+
+}
+
+
 //Similar Books
 function getSimilarBooks() {
     const filteredBooks = myStore.books.filter(item => item.cat === book.value.cat);
     similarBooks.value = filteredBooks.slice(0, 5);
 };
-
-
 
 onMounted(async () => {
     getAllData(bookId.value)
@@ -211,7 +157,6 @@ watch(() => route.params.id, (newId) => {
     bookId.value = newId;
     getAllData(newId);
 }
-
 
 );
 
@@ -315,148 +260,10 @@ watch(() => route.params.id, (newId) => {
         }
     }
 
-    .book__detail-bottom {
-        margin-top: 50px;
 
-        .tab__nav {
-            display: flex;
-            justify-content: center;
-            border-bottom: 1px solid #0514671a;
-
-            li {
-                padding: 10px;
-                cursor: pointer;
-            }
-
-            .active__link {
-                border: 1px solid #0514671a;
-                color: #fe7f02;
-                border-top-left-radius: 5px;
-                border-top-right-radius: 5px;
-                border-bottom: 1px solid #fff;
-                margin-bottom: -1px;
-            }
-        }
-
-        .tab__content {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            padding: 30px 0;
-
-            .person__comments {
-                display: flex;
-                gap: 40px;
-
-                .profile {
-                    width: 150px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-
-                    div {
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 50%;
-                        border: 1px solid #00c897;
-                        padding: 5px;
-
-                        img {
-                            width: 100%;
-                        }
-                    }
-
-                    h3 {
-                        margin-top: 10px;
-                    }
-
-                }
-
-                .desciption {
-                    width: 100%;
-
-                    div {
-                        display: flex;
-                        justify-content: space-between;
-                    }
-
-                    .desc {
-                        margin-top: 20px;
-                        color: #C0C0C0;
-                        font-style: italic;
-                        line-height: 20px;
-                    }
-
-
-
-                    .star {
-                        font-size: 24px;
-                        color: lightgray;
-                        margin: 0 2px;
-                    }
-
-                    .filled {
-                        color: #fe7f02;
-                    }
-                }
-            }
-
-            .write__comment {
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
-
-                .comment__item {
-                    h3 {
-                        font-size: 20px;
-                        margin-bottom: 10px;
-                    }
-
-                    .rate__container {
-                        display: flex;
-                        gap: 5px;
-
-                        .star {
-                            font-size: 25px;
-                            cursor: pointer;
-                            color: #ccc;
-                            display: flex;
-                        }
-
-                        .star.hover,
-                        .star.selected {
-                            color: #fe7f02;
-                        }
-                    }
-
-                    textarea {
-                        width: 100%;
-                        height: 100px;
-                        resize: none;
-                        font-size: 14px;
-                        border-radius: 8px;
-                        padding: 10px 20px;
-
-                        &:focus {
-                            box-shadow: none;
-                            border: 1px solid #fe7f02;
-                        }
-                    }
-                }
-            }
-
-        }
-
-        hr {
-            opacity: 0.25;
-        }
-    }
 
 
 }
-
 
 .smilar__books {
     .section__name {
@@ -469,6 +276,86 @@ watch(() => route.params.id, (newId) => {
         display: flex;
         flex-wrap: wrap;
         gap: 25px;
+    }
+}
+
+
+/*---------------Media Queries--------------*/
+@media (max-width: 767px) {
+    .book__name {
+        font-size: 30px;
+        margin-top: 20px;
+    }
+
+    .book__detail-cotainer {
+        padding: 0;
+
+        .book__detail-top {
+            flex-direction: column;
+            gap: 20px;
+
+            aside {
+                max-width: unset;
+
+                .aside__details {
+                    height: 350px;
+                }
+            }
+
+            .book___detail {
+                .book__reviews {
+                    font-size: 18px;
+
+                    .star {
+                        font-size: 16px;
+                    }
+                }
+
+                .book__items {
+                    div {
+                        span {
+                            font-size: 18px;
+                        }
+                    }
+                }
+
+                .book__desc {
+                    h3 {
+                        font-size: 18px;
+                    }
+
+                    p {
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+
+    .smilar__books {
+        .section__name {
+            font-size: 20px;
+        }
+
+        .book__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    }
+
+
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+
+    .book__detail-cotainer {
+        padding: 0;
+
+        .book__detail-top {
+            gap: 20px;
+        }
+
     }
 }
 </style>

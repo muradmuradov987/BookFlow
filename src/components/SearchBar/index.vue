@@ -6,12 +6,12 @@
                     <h5>Levels</h5>
                     <img src="@/assets/img/plagins/book.png" alt="">
                     <ul class="categories__collapse">
-                        <li>A1 starter</li>
-                        <li>A2 elementary</li>
-                        <li>B1 pre-intermediate</li>
-                        <li>B1+ intermediate</li>
-                        <li>B2+ intermediate-plus</li>
-                        <li>C1 advanced</li>
+                        <li @click="navigateToLevel('Starter')">Starter</li>
+                        <li @click="navigateToLevel('Elementary')">Elementary</li>
+                        <li @click="navigateToLevel('Pre-intermediate')">Pre-intermediate</li>
+                        <li @click="navigateToLevel('Intermediate')">Intermediate</li>
+                        <li @click="navigateToLevel('Intermediate-plus')">Intermediate-plus</li>
+                        <li @click="navigateToLevel('Advanced')">Advanced</li>
                     </ul>
                 </div>
                 <div class="search__box">
@@ -24,6 +24,13 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+
+const navigateToLevel = (level) => {
+    router.push({ name: 'book-level', params: { level } });
+};
 
 </script>
 

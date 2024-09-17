@@ -17,8 +17,8 @@
                     <router-link to="/library" class="nav__items">
                         Library
                     </router-link>
-                    <router-link to="/best-sellers" class="nav__items">
-                        My books
+                    <router-link to="/my-books" class="nav__items">
+                        My books <span class="mybook__list" v-if="myStore.auth">({{myStore.myBooks?.length}})</span>
                     </router-link>
                     <router-link to="/gift-card" class="nav__items">
                         Translate
@@ -110,9 +110,12 @@ nav {
         .nav__items {
             margin: 0 12px;
             font-size: 18px;
-
+            position: relative;
             .home_icon {
                 width: 20px;
+            }
+            .mybook__list{
+                color: #fe7f02;
             }
 
             &:hover {

@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
+        "name": "Dark Rose",
+        "author": "Oscar Wilde",
+        "level": "Starter",
+        "cat": "Business",
+        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque, blanditiis repellat tenetur inventore ipsum libero nobis exercitationem ea non, repellendus provident porro sunt ratione quas consectetur quasi. Itaque, nam. Voluptatum tempora, tempore facere nisi vitae autem voluptas consequatur veniam aperiam obcaecati, aut nam eos nobis officiis soluta",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Jhon Doe",
+                "star": 5,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Jhon Doe",
+                "star": 1,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
+        "name": "Walden",
+        "author": "Oscar Wilde",
+        "level": "Elemantary",
+        "cat": "Business",
+        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque, blanditiis repellat tenetur inventore ipsum libero nobis exercitationem ea non, repellendus provident porro sunt ratione quas consectetur quasi. Itaque, nam. Voluptatum tempora, tempore facere nisi vitae autem voluptas consequatur veniam aperiam obcaecati, aut nam eos nobis officiis soluta",
+        "reviews": [
+            {
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "personName": "Jhon Doe",
+                "star": 5,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "personName": "Jhon Doe",
+                "star": 1,
+                "date": "December 4, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
+    }
+]
