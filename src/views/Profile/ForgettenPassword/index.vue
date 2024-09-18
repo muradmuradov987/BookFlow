@@ -6,7 +6,7 @@
             </template>
             <template #breadcrumbs>
                 <router-link to="/" class="breadcrumbs__link">Home</router-link>
-                <img src="@/assets/img/plagins/right-arrow.png" alt="">
+                <img src="@/assets/img/plugins/right-arrow.png" alt="">
                 <router-link to="/forgetten-password" class="breadcrumbs__link">Forgot password</router-link>
             </template>
         </Breadcrumb>

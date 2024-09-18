@@ -1,24 +1,194 @@
 [
     {
-        "id": 1,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
-        "author": "Oscar Wilde",
-        "level": "starter"
-    },
-    {
         "id": 2,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2024-07/91Ab0EH10BL._SL1500_.jpg?itok=OgxzlrnX",
+        "name": "Playing in The Rain",
+        "author": "Sandra. J. Jackson",
+        "level": "Elementary",
+        "cat": "Culture",
+        "desc": " When the effects of a hypnosis-inducing drug fade, April slowly begins a conscious awakening. Memories of her past are unclear, and she has no recollection of her identity or whereabouts. As the days slip by, April realizes there is more to life than existing when she is introduced to an occupant who does just that - her sister. The more she learns about her environment, the more she wants to escape. But can April remember her past, and her sister? Will she have the courage to leave - and if she does, where can she go? A riveting story of suspense set in a post-apocalyptic world, 'Playing In The Rain' is the first book in Sandra J. Jackson's Escape Series.",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     },
     {
-        "id": 3,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
-        "author": "Oscar Wilde",
-        "level": "starter"
+        "id": 8,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
+        "name": "Walden",
+        "author": "Henry David Thoreau",
+        "level": "Elementary",
+        "cat": "Biography",
+        "desc": "When I wrote the following pages, or rather the bulk of them, I lived alone, in the woods, a mile from any neighbor, in a house which I had built myself, on the shore of Walden Pond, in Concord, Massachusetts, and earned my living by the labor of my hands only. I lived there two years and two months. At present I am a sojourner in civilized life again.",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2019-06/size.jpg?itok=kqwACuzf",
+        "name": "The Size of Your Dreams",
+        "author": "Dave Mason",
+        "level": "Intermediate",
+        "cat": "Business",
+        "desc": "What if you could transform your life, your health, your relationships, your finances, and your self-image in just five minutes a day? What if you could learn to do all of that while being engrossed in a story that brings the techniques you’ll need to life? Introducing a groundbreaking novel that’s been compared to The Karate Kid, Dead Poets Society, and Way of the Peaceful Warrior.",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2020-08/bread.jpg?itok=cJR2Pp-n",
+        "name": "Breadcrumbs",
+        "author": "Francis J. Shaw",
+        "level": "Advanced",
+        "cat": "Culture",
+        "desc": "Read any good stories lately? I am sure you have. They sent you on a journey—perhaps to another place, a different time…somewhere you have never been before. Tales, yarns, legends and fables fill our human history, and stories are as powerful today as they have always been. Have you ever wondered why you can’t resist going? It’s time to find out…",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-3520.jpg?itok=DFVxY1zk",
+        "name": "Siddhartha",
+        "author": "Herman Hesse",
+        "level": "Starter",
+        "cat": "Business",
+        "desc": "An allegorical novel that follows the spiritual journey of an Indian man called Siddhartha during the time of Buddha (6th century B.C.). Beginning with the main character's departure from his Brahmin home the search for enlightenment takes Siddhartha through a series of changes and realizations. ",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-orig-7340.jpg?itok=43f030_B",
+        "name": "The Invisible Man",
+        "author": "H. G. Wells",
+        "level": "Elementary",
+        "cat": "Drama",
+        "desc": "The Invisible Man of the title is ''Griffin'', a scientist who theorizes that if a person's refractive index is changed to exactly that of air and his body does not absorb or reflect light, then he will not be visible. He successfully carries out this procedure on himself, but begins to become mentally unstable as a result...",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     }
-
 ]

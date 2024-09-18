@@ -7,7 +7,7 @@
             </template>
             <template #breadcrumbs>
                 <router-link to="/" class="breadcrumbs__link">Home</router-link>
-                <img src="@/assets/img/plagins/right-arrow.png" alt="">
+                <img src="@/assets/img/plugins/right-arrow.png" alt="">
                 <router-link to="/my-books" class="breadcrumbs__link">My books</router-link>
             </template>
         </Breadcrumb>
@@ -19,7 +19,7 @@
 
         <div class="book__list" v-if="myStore.auth">
             <BookCard v-for="book in myStore.myBooks" :key="book.id" :id="book.id" :imageSrc="book.imageSrc"
-                :name="book.name" :author="book.author" :level="book.level" />
+                :name="book.name" :author="book.author" :level="book.level" :showDeleteButton=true />
         </div>
     </section>
 </template>
@@ -29,6 +29,8 @@ import Breadcrumb from '@/components/UI/Breadcrumb.vue';
 import BookCard from '@/components/BookCard/index.vue';
 import { useCounterStore } from "@/stores/counter";
 const myStore = useCounterStore();
+
+
 </script>
 
 <style lang="scss" scoped>

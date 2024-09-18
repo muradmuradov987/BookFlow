@@ -48,7 +48,7 @@
         <div class="container">
             <h1 class="section__name">Trending books</h1>
             <div class="book__list">
-                <BookCard v-for="book in myStore.books" :id="book.id" :link="book.link" :imageSrc="book.imageSrc"
+                <BookCard v-for="book in myStore.trendBooks" :id="book.id" :link="book.link" :imageSrc="book.imageSrc"
                     :name="book.name" :author="book.author" :level="book.level" />
             </div>
 
@@ -63,7 +63,7 @@
             <div class="subscribe__container">
 
                 <div class="subscribe__content">
-                    <img src="@/assets/img/Plagins/icon-newsletter.png" alt="" />
+                    <img src="@/assets/img/plugins/icon-newsletter.png" alt="" />
                     <div class="subscribe__text">
                         <h4>Subscribe to our newsletter</h4>
                         <p>Sign up to get discount for next order</p>

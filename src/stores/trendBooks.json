@@ -1,58 +1,194 @@
 [
     {
         "id": 1,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
-        "author": "Oscar Wilde",
-        "level": "starter"
-    },
-    {
-        "id": 2,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2024-07/A1iDsBqbhhL._SL1500_.jpg?itok=_NU9PTXf",
+        "name": "River Bones",
+        "author": "Mary Deal",
+        "level": "Starter",
+        "cat": "Detective",
+        "desc": "A serial killer is on the loose in Sacramento River Delta. When Sara Mason returns to her hometown to start a new life, she learns that a murderer is terrorizing its residents. Despite battling difficult childhood memories, Sara is determined to make peace with her past. But she soon learns that the elusive psychopath is now stalking her. Sara's attempt to rebuild her life is hindered even more by the discovery of skeletal remains on her property. As the investigation focuses on several suspects, Sara discovers critical clues and bravely volunteers to be a decoy for the sheriff's department. Sara's destiny has brought her back home, but will her decision lead her down a path lined with danger... and straight into the arms of a madman?",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     },
     {
         "id": 3,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
-        "author": "Oscar Wilde",
-        "level": "starter"
-    },
-    {
-        "id": 4,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2024-07/91JczhKzCrL._SL1500_.jpg?itok=6VNlPSEp",
+        "name": "Remember",
+        "author": "Marnie Cate",
+        "level": "Pre-intermediate",
+        "cat": "Detective",
+        "desc": "Mara Stone has always sensed an elusive emptiness within herself, a void she couldn't quite grasp. Raised by a nurturing and devoted grandmother and harboring an intense love for a boy with captivating blue eyes, Mara remained unaware of the missing pieces of her existence.But when the secrets of her great-grandmother, Genevieve Silver, are revealed, Mara's world shatters. The once-hidden secrets of her ancestry, bound by the ancient role of Protector of the Elemental Magic, burst forth into the light. As unseen realms are laid bare and forgotten memories flood her mind, Mara must confront a reality both wondrous and terrifying.",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     },
     {
         "id": 5,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
-        "author": "Oscar Wilde",
-        "level": "starter"
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-1621.jpg?itok=vOmTwq0x",
+        "name": "Don Quixote",
+        "author": "Miguel de Cervantes Saavedra",
+        "level": "Intermediate-plus",
+        "cat": "tale",
+        "desc": "Lady Amanda Golightly of Belchester Towers is a person in complete contrast to the stereotypical image of one of her breeding. She is short, portly, and embarrassingly forthright. If she wasn't calling a spade a shovel, it was only because she was calling it 'trumps'! On a visit to a local nursing home where an old business partner of her father's is residing, she unexpectedly discovers a long-lost friend, Hugo Cholmondley-Crichton-Crump - and stumbles upon murder as well.",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     },
     {
         "id": 6,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2022-05/51R7Hxr7y1L.jpeg?itok=rU3IaSDg",
+        "name": "Bronze Magic",
+        "author": "Jennifer Ealey",
+        "level": "Advanced",
+        "cat": "Adventure",
+        "desc": "Exiled by his power-hungry brothers, Prince Tarkyn encounters the woodfolk: a secretive group of telepaths living deep in the woodlands.When bounty hunters attack, Tarquin narrowly escapes with the aid of the forest-dwellers, and discovers a secret about their source of magic. Embracing his new identity, allegiances are formed as the woodfolk hail Tarquin as the Guardian Of The Forest.But can he find a way to protect this mysterious realm, and seize his true destiny? ",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     },
     {
-        "id": 7,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Rebecca",
-        "author": "Oscar Wilde",
-        "level": "starter"
+        "id": 15,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-5719.jpg?itok=8jdwdpBZ",
+        "name": "Collected Works of Poe",
+        "author": "Edgar Allan Poe",
+        "level": "Pre-intermediate",
+        "cat": "Detective",
+        "desc": "Ulysses chronicles the passage through Dublin of Leopold Bloom during an unremarkable day, June 16, 1904. The title alludes to the hero of Homer's Odyssey, and there are many parallels, both implicit and explicit, between the two works.Written from 1914 to 1921, the novel was serialized in the American journal The Little Review from 1918, until the publication of the Nausicaa episode led to a prosecution for obscenity. The book was first published in its entirety in Paris in 1922, but was banned in both the United States and United Kingdom until the 1930s. The work was blacklisted by Irish customs.",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     },
     {
-        "id": 8,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "1984",
-        "author": "George Orwell",
-        "level": "intermediate"
+        "id": 11,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2024-06/Back-up-boek-2-EBOOK-ENGELS-groot.jpg?itok=MFKUCZY-",
+        "name": "Back-Up Bridge in Time",
+        "author": "Holtes & Sietsma",
+        "level": "Intermediate-plus",
+        "cat": "Drama",
+        "desc": "The continuation of an exciting thriller, with the necessary action, plot twists and many surprises. In the Peace Palace in The Hague Hakon Torstein Eriksson bumps into a mysterious woman. From the moment he tumbles down the stairs of the Peace Palace with her in his arms, he finds mysterious events taking place. Deeply hidden secrets that cause an avalanche of questions come to the surface",
+        "reviews": [
+            {
+                "id": 1,
+                "personName": "Jhon Doe",
+                "star": 3,
+                "date": "December 1, 2023",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 2,
+                "personName": "Alex",
+                "star": 5,
+                "date": "December 24, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            },
+            {
+                "id": 3,
+                "personName": "Tom Hardy",
+                "star": 1,
+                "date": "May 10, 2024",
+                "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
+            }
+        ]
     }
 ]

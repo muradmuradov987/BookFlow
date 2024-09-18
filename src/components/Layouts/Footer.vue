@@ -4,15 +4,15 @@
             <div class="footer__container">
                 <div class="contact__info">
                     <div class="phone__number">
-                        <img src="@/assets/img/plagins/phone.png" alt="">
+                        <img src="@/assets/img/plugins/phone.png" alt="">
                         <h5>+48 500-500-500 / toll free</h5>
                     </div>
                     <div class="contact__mail">
-                        <img src="@/assets/img/plagins/letter.png" alt="">
+                        <img src="@/assets/img/plugins/letter.png" alt="">
                         <h5>contact@example.com</h5>
                     </div>
                     <div class="support__mail">
-                        <img src="@/assets/img/plagins/support.png" alt="">
+                        <img src="@/assets/img/plugins/support.png" alt="">
                         <h5>support@example.com</h5>
                     </div>
                 </div>

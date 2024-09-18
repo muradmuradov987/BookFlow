@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useCounterStore } from "@/stores/counter";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,6 +30,11 @@ const router = createRouter({
       component: () => import("../views/Profile/Register/index.vue"),
     },
     {
+      path: "/profile",
+      name: "profile",
+      component: () => import("../views/Profile/Account/index.vue"),
+    },
+    {
       path: "/my-books",
       name: "my-books",
       component: () => import("../views/MyBooks.vue"),
@@ -50,12 +56,23 @@ const router = createRouter({
       component: () => import("../views/BookLevel.vue"),
     },
   ],
+
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
     }
     return { top: 0 };
   },
+});
+
+router.beforeEach((to, from, next) => {
+  const authStore = useCounterStore();
+
+  if (to.name === "profile" && !authStore.auth) {
+    next({ name: "login" });
+  } else {
+    next();
+  }
 });
 
 export default router;

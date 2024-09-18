@@ -9,7 +9,7 @@
             <div class="person__comments" v-for="item in book?.reviews">
                 <div class="profile">
                     <div>
-                        <img src="@/assets/img/plagins/user.png" alt="">
+                        <img src="@/assets/img/plugins/user.png" alt="">
                     </div>
                     <h3>{{ item?.personName }}</h3>
                 </div>

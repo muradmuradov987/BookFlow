@@ -1,61 +1,64 @@
 [
     {
-        "id": 1,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330_ebook/public/webform/ebook_feature_application/10118/odr-ebook-sm_0.jpg?itok=Lny312rI",
-        "name": "Dark Rose",
-        "author": "Oscar Wilde",
-        "level": "Starter",
-        "cat": "Business",
-        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque, blanditiis repellat tenetur inventore ipsum libero nobis exercitationem ea non, repellendus provident porro sunt ratione quas consectetur quasi. Itaque, nam. Voluptatum tempora, tempore facere nisi vitae autem voluptas consequatur veniam aperiam obcaecati, aut nam eos nobis officiis soluta",
+        "id": 9,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/2021-07/Love%20for%20a%20Deaf%20Rebel%20eBook%20Edition.jpg?itok=abvBqyHU",
+        "name": "Love for a Deaf Rebel",
+        "author": "Derrick King",
+        "level": "Pre-intermediate",
+        "cat": "Biography",
+        "desc": "Love for a Deaf Rebel is the true story of a tumultuous romance. With pathos and nostalgia, the author recounts his roller-coaster ride with Pearl, a vivacious deaf maverick, who, unknown to him, had paranoid schizophrenia. We follow their encounters through actual notes written before Derrick learns sign language; we go on their motorcycle ride to Mexico and Guatemala; we watch as the happy couple moves to Bowen Island, a British Columbia community with just three paved roads. Pearl and the author marry and build their dream home and hobby farm. They encounter one obstacle after another while building their life together as Pearl’s perception of reality—and, crucially, their perception of each other—begins to change. The author learns what it means to be deaf, what it means to struggle with mental health, and what it means to love such a woman unconditionally—the ecstasy and the agony.",
         "reviews": [
             {
                 "id": 1,
                 "personName": "Jhon Doe",
                 "star": 3,
-                "date": "December 4, 2024",
+                "date": "December 1, 2023",
                 "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
             },
             {
                 "id": 2,
-                "personName": "Jhon Doe",
+                "personName": "Alex",
                 "star": 5,
-                "date": "December 4, 2024",
+                "date": "December 24, 2024",
                 "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
             },
             {
                 "id": 3,
-                "personName": "Jhon Doe",
+                "personName": "Tom Hardy",
                 "star": 1,
-                "date": "December 4, 2024",
+                "date": "May 10, 2024",
                 "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
             }
         ]
     },
     {
-        "id": 2,
-        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-6908.jpg?itok=DeSb8poX",
-        "name": "Walden",
-        "author": "Oscar Wilde",
-        "level": "Elemantary",
+        "id": 13,
+        "imageSrc": "https://manybooks.net/sites/default/files/styles/220x330sc/public/old-covers/cover-cust-3520.jpg?itok=DFVxY1zk",
+        "name": "Siddhartha",
+        "author": "Herman Hesse",
+        "level": "Starter",
         "cat": "Business",
-        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque, blanditiis repellat tenetur inventore ipsum libero nobis exercitationem ea non, repellendus provident porro sunt ratione quas consectetur quasi. Itaque, nam. Voluptatum tempora, tempore facere nisi vitae autem voluptas consequatur veniam aperiam obcaecati, aut nam eos nobis officiis soluta",
+        "desc": "An allegorical novel that follows the spiritual journey of an Indian man called Siddhartha during the time of Buddha (6th century B.C.). Beginning with the main character's departure from his Brahmin home the search for enlightenment takes Siddhartha through a series of changes and realizations. ",
         "reviews": [
             {
+                "id": 1,
                 "personName": "Jhon Doe",
                 "star": 3,
-                "date": "December 4, 2024",
+                "date": "December 1, 2023",
                 "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
             },
             {
-                "personName": "Jhon Doe",
+                "id": 2,
+                "personName": "Alex",
                 "star": 5,
-                "date": "December 4, 2024",
+                "date": "December 24, 2024",
                 "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
             },
             {
-                "personName": "Jhon Doe",
+                "id": 3,
+                "personName": "Tom Hardy",
                 "star": 1,
-                "date": "December 4, 2024",
+                "date": "May 10, 2024",
                 "comment": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae dolore quam quis at atque"
             }
         ]

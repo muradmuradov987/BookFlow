@@ -9,10 +9,10 @@
 
             <div class="navbar__menu">
                 <div class="mobile__menu" :class="{ showMenu: showMobile }">
-                    <img @click="showMobile = !showMobile" class="close__btn" src="../../assets/img/plagins/close.png"
+                    <img @click="showMobile = !showMobile" class="close__btn" src="../../assets/img/plugins/close.png"
                         alt="ss">
                     <router-link to="/" class="nav__items ">
-                        <img class="home_icon" src="../../assets/img/plagins/home.png" alt="">
+                        <img class="home_icon" src="../../assets/img/plugins/home.png" alt="">
                     </router-link>
                     <router-link to="/library" class="nav__items">
                         Library
@@ -24,19 +24,19 @@
                         Translate
                     </router-link>
                     <div class="social__network">
-                        <img src="../../assets/img/plagins/facebook.png" alt="">
-                        <img src="../../assets/img/plagins/twitter.png" alt="">
-                        <img src="../../assets/img/plagins/youtube.png" alt="">
+                        <img src="../../assets/img/plugins/facebook.png" alt="">
+                        <img src="../../assets/img/plugins/twitter.png" alt="">
+                        <img src="../../assets/img/plugins/youtube.png" alt="">
                     </div>
                 </div>
                 <router-link to="/login" class="nav__items login" v-if="!myStore.auth">
                     Login
                 </router-link>
                 <div class="profile nav__items" v-if="myStore.auth">
-                    <img src="../../assets/img/plagins/user.png" alt="ss">
+                    <img src="../../assets/img/plugins/user.png" alt="ss">
                     <div class="profile__menu-container">
                         <div class="profile__menu">
-                            <router-link to="/best-sellers" class="profile__menu-link">
+                            <router-link to="/profile" class="profile__menu-link">
                                 Profile
                             </router-link>
                             <router-link to="/best-sellers" class="profile__menu-link">
@@ -51,11 +51,8 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    Dark mode
-                </div>
                 <img @click="showMobile = !showMobile" class="burger-menu"
-                    src="../../assets/img/plagins/burger-menu.png" alt="">
+                    src="../../assets/img/plugins/burger-menu.png" alt="">
             </div>
         </nav>
     </div>
