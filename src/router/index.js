@@ -55,6 +55,17 @@ const router = createRouter({
       name: "book-level",
       component: () => import("../views/BookLevel.vue"),
     },
+    {
+      path: "/book-detail/:id/read",
+      name: "read",
+      component: () => import("../views/Read.vue"),
+      props: true,
+    },
+    {
+      path: "/notes",
+      name: "notes",
+      component: () => import("../views/Notes.vue"),
+    },
   ],
 
   scrollBehavior(to, from, savedPosition) {

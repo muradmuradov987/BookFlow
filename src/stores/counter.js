@@ -4,6 +4,7 @@ import booksData from "../stores/books.json";
 import popularBooksData from "../stores/popularBooks.json";
 import trendBooksData from "../stores/trendBooks.json";
 import myBooksData from "../stores/myBooks.json";
+import myNotesData from "../stores/myNotes.json";
 
 export const useCounterStore = defineStore("counter", () => {
   ////////////////////////////STATE////////////////////////////////////////
@@ -13,8 +14,9 @@ export const useCounterStore = defineStore("counter", () => {
   const popularBooks = popularBooksData;
   const trendBooks = trendBooksData;
   const myBooks = myBooksData;
+  const myNotes = myNotesData;
 
- 
+  const isModalVisible = false;
 
   /////////////////////////////////////////////////////////////////////////
   ////////
@@ -29,9 +31,8 @@ export const useCounterStore = defineStore("counter", () => {
   ////////
   ////////////////////////////ACTIONS////////////////////////////////////////
 
-  // function increment() {
-  //   count.value++
-  // }
+ 
+
   //////////////////////////////////////////////////////////////////////////
 
   return {
@@ -41,6 +42,9 @@ export const useCounterStore = defineStore("counter", () => {
     popularBooks,
     trendBooks,
     myBooks,
+    myNotes,
+    isModalVisible,
     //actions
+   
   };
 });

@@ -38,7 +38,7 @@
                         <p>{{ book?.desc }} </p>
                     </div>
                     <div class="book__btns">
-                        <Secondary>Read online</Secondary>
+                        <RouterLink :to="{ name: 'read', params: { id: bookId } }"><Secondary>Read online</Secondary></RouterLink>
                         <Primary @click="addToMyBokks">Add to my books</Primary>
                     </div>
                 </div>

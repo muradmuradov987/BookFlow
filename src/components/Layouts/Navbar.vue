@@ -37,13 +37,13 @@
                     <div class="profile__menu-container">
                         <div class="profile__menu">
                             <router-link to="/profile" class="profile__menu-link">
-                                Profile
+                                Account
                             </router-link>
                             <router-link to="/best-sellers" class="profile__menu-link">
-                                My vacoblary
+                                Vacoblary
                             </router-link>
-                            <router-link to="/best-sellers" class="profile__menu-link">
-                                My nots
+                            <router-link to="/notes" class="profile__menu-link">
+                                Notes
                             </router-link>
                             <router-link @click="logOut" to="/" class="profile__menu-link">
                                 Log out
