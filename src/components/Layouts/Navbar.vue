@@ -18,9 +18,9 @@
                         Library
                     </router-link>
                     <router-link to="/my-books" class="nav__items">
-                        My books <span class="mybook__list" v-if="myStore.auth">({{myStore.myBooks?.length}})</span>
+                        My books <span class="mybook__list" v-if="myStore.auth">({{ myStore.myBooks?.length }})</span>
                     </router-link>
-                    <router-link to="/gift-card" class="nav__items">
+                    <router-link to="/" class="nav__items">
                         Translate
                     </router-link>
                     <div class="social__network">
@@ -39,7 +39,7 @@
                             <router-link to="/profile" class="profile__menu-link">
                                 Account
                             </router-link>
-                            <router-link to="/best-sellers" class="profile__menu-link">
+                            <router-link to="/" class="profile__menu-link">
                                 Vacoblary
                             </router-link>
                             <router-link to="/notes" class="profile__menu-link">
@@ -108,10 +108,12 @@ nav {
             margin: 0 12px;
             font-size: 18px;
             position: relative;
+
             .home_icon {
                 width: 20px;
             }
-            .mybook__list{
+
+            .mybook__list {
                 color: #fe7f02;
             }
 
@@ -163,12 +165,12 @@ nav {
                 padding-top: 15px;
                 min-height: 100px;
                 width: 150px;
-                z-index: 3;
+                z-index: 5;
                 display: none;
 
                 .profile__menu {
                     border-radius: 7px;
-                    padding: 10px ;
+                    padding: 10px;
                     display: flex;
                     flex-direction: column;
                     gap: 5px;
@@ -181,6 +183,7 @@ nav {
                         color: #fff;
                         padding: 5px;
                         border-radius: 5px;
+
                         &:hover {
                             background: white;
                             color: black;

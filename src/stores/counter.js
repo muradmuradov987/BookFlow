@@ -19,7 +19,7 @@ export const useCounterStore = defineStore("counter", () => {
   const isModalVisible = false;
 
   const modal = {
-    show: true,
+    show: false,
     name: "",
     title: "",
   };
@@ -36,11 +36,10 @@ export const useCounterStore = defineStore("counter", () => {
   ////////
   ////////////////////////////ACTIONS////////////////////////////////////////
 
-  function closeModal() {
-    console.log("modal");
-    modal.show = false;
-    modal.title = "";
-    modal.name = "";
+  function closeModal(note) {
+    this.modal.show = false;
+    this.modal.title = "";
+    this.modal.noteName = note.noteName;
   }
 
   //////////////////////////////////////////////////////////////////////////

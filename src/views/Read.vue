@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="container">
-            <h1 class="book__name">{{bookData.name}}</h1>
+            <h1 class="book__name">{{bookData?.name}}</h1>
             <div class="read__book">
                 <aside>
                     <div class="trasnlate__container"></div>

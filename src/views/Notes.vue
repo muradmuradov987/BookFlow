@@ -1,7 +1,12 @@
 <template>
     <Modal>
-        <template #default>
-            ss
+        <template #default v-if="myStore.modal.title === 'noteCard'">
+            <input class="noteInput" type="text" v-on:keyup.enter="addNote" v-model="note" placeholder="add note...">
+            <p v-if="!tempNoteData.notes.length">There is no note</p>
+            <div class="modalNote" v-for="item in tempNoteData?.notes" :key="item.id">
+                <span>{{ item.note }}</span>
+                <img @click="deleteNote(item.id)" src="@/assets/img/plugins/trash.png" alt="">
+            </div>
         </template>
     </Modal>
 
@@ -29,18 +34,14 @@
             <h3>No notes available. Please add some notes to get started!</h3>
         </section>
         <div class="note__container">
-            <div class="note" v-for="note in myStore.myNotes" @click="editNote(note)">
-                <h3 class="note__title">{{ note.title }}</h3>
+            <div class="note" v-for="note in myStore.myNotes" @click="openNoteCard(note)">
+                <h3 class="note__title">{{ note?.noteName }}</h3>
                 <div class="note__bottom">
-                    <span class="date">{{ note.date }}</span>
-                    <div class="edit">
-                        <!-- <img src="@/assets/img/plugins/edit.png" alt=""> -->
-                        <img @click="deleteNote(note.id)" src="@/assets/img/plugins/trash.png" alt="">
-                    </div>
+                    <span class="date">{{ note?.date }}</span>
+                    <img @click="deleteNoteCard(note.id)" src="@/assets/img/plugins/trash.png" alt="">
                 </div>
             </div>
         </div>
-
     </div>
 
 </template>
@@ -68,20 +69,16 @@ function currentDate() {
 function createNote() {
     let note = {
         "id": Date.now(),
-        "title": title.value,
-        "date": formattedDate.value
+        "noteName": title.value,
+        "date": formattedDate.value,
+        "notes": []
     }
     myStore.myNotes.unshift(note)
     title.value = ''
 }
 
 
-function editNote(note) {
-    console.log(note);
-
-}
-
-function deleteNote(id) {
+function deleteNoteCard(id) {
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -102,6 +99,31 @@ function deleteNote(id) {
     });
 
 
+
+}
+
+
+function openNoteCard(note) {
+    myStore.modal.show = true
+    myStore.modal.title = 'noteCard'
+    myStore.modal.noteName = note.noteName
+    tempNoteData.value = note
+}
+
+
+const tempNoteData = ref(null)
+const note = ref('')
+function addNote() {
+    tempNoteData.value.notes.unshift({
+        id: Date.now(),
+        note: note.value
+    })
+    note.value = ''
+}
+
+function deleteNote(id) {
+    tempNoteData.value.notes = tempNoteData.value.notes.filter(item => item.id !== id)
+    console.log(id);
 
 }
 
@@ -166,16 +188,54 @@ onMounted(() => {
             align-items: end;
             justify-content: space-between;
 
-            .edit {
-                transition: 0.2s ease;
-
-                img {
-                    width: 25px;
-                    margin-left: 5px;
-                    cursor: pointer;
-                }
+            img {
+                width: 25px;
+                margin-left: 5px;
+                cursor: pointer;
+                position: relative;
             }
         }
+    }
+}
+
+.noteInput {
+    width: 50%;
+    border-radius: 7px;
+    border: 1px solid #00c897;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.modalNote {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    padding-left: 20px;
+    border-bottom: 1px solid #00c897;
+    margin-bottom: 15px;
+
+    &::before {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background: #00c897;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+    }
+
+    span {
+        line-height: 20px;
+        font-size: 14px;
+    }
+
+    img {
+        width: 20px;
+        cursor: pointer;
     }
 }
 

@@ -2,12 +2,11 @@
     <div class="modal__backdrop" v-if="myStore.modal.show" @click="closeBackdrop">
         <div class="modal__container">
             <div class="modal__header">
-                <h5 class="modal__title">sfsfs</h5>
+                <h5 class="modal__noteName">{{ myStore.modal.noteName }}</h5>
             </div>
             <div class="modal__body">
                 <img class="closeBtn" src="@/assets/img/plugins/close.png" @click="myStore.closeModal" alt="">
                 <slot></slot>
-                {{  myStore.modal}}
             </div>
         </div>
     </div>
@@ -39,23 +38,28 @@ const myStore = useCounterStore();
     .modal__container {
         max-width: 600px;
         width: 100%;
-        max-height: 750px;
+        max-height: 550px;
         overflow-y: auto;
         background: rgb(255, 255, 255);
         z-index: 5;
         border-radius: 10px;
         position: relative;
-
         &::-webkit-scrollbar {
-            display: none;
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #00c897;
+            border-radius: 20px;
         }
 
         .modal__header {
             display: flex;
             justify-content: space-between;
             padding: 20px;
+            padding-bottom: 0;
 
-            .modal__title {
+            .modal__noteName {
                 font-size: 25px;
             }
         }
@@ -65,7 +69,8 @@ const myStore = useCounterStore();
 
 
         }
-        .closeBtn{
+
+        .closeBtn {
             position: absolute;
             top: 20px;
             right: 20px;
