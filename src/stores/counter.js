@@ -8,7 +8,7 @@ import myNotesData from "../stores/myNotes.json";
 
 export const useCounterStore = defineStore("counter", () => {
   ////////////////////////////STATE////////////////////////////////////////
-  const auth = ref(false);
+  const auth = ref(true);
 
   const books = booksData;
   const popularBooks = popularBooksData;
@@ -18,6 +18,11 @@ export const useCounterStore = defineStore("counter", () => {
 
   const isModalVisible = false;
 
+  const modal = {
+    show: true,
+    name: "",
+    title: "",
+  };
   /////////////////////////////////////////////////////////////////////////
   ////////
   ////////
@@ -31,7 +36,12 @@ export const useCounterStore = defineStore("counter", () => {
   ////////
   ////////////////////////////ACTIONS////////////////////////////////////////
 
- 
+  function closeModal() {
+    console.log("modal");
+    modal.show = false;
+    modal.title = "";
+    modal.name = "";
+  }
 
   //////////////////////////////////////////////////////////////////////////
 
@@ -44,7 +54,8 @@ export const useCounterStore = defineStore("counter", () => {
     myBooks,
     myNotes,
     isModalVisible,
+    modal,
     //actions
-   
+    closeModal,
   };
 });
