@@ -34,7 +34,7 @@
             <h3>No notes available. Please add some notes to get started!</h3>
         </section>
         <div class="note__container">
-            <div class="note" v-for="note in myStore.myNotes" @click="openNoteCard(note)">
+            <div class="note" v-for="note in myStore.myNotes" :key="note.id" @click="openNoteCard(note)">
                 <h3 class="note__title">{{ note?.noteName }}</h3>
                 <div class="note__bottom">
                     <span class="date">{{ note?.date }}</span>
@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref,computed, onMounted } from 'vue'
 import Breadcrumb from '@/components/UI/Breadcrumb.vue';
 import Modal from "@/components/Modal/index.vue";
 import Swal from 'sweetalert2';
@@ -103,11 +103,16 @@ function deleteNoteCard(id) {
 }
 
 
+computed(()=>{
+    return 
+})
+
 function openNoteCard(note) {
     myStore.modal.show = true
     myStore.modal.title = 'noteCard'
     myStore.modal.noteName = note.noteName
     tempNoteData.value = note
+
 }
 
 
@@ -226,11 +231,13 @@ onMounted(() => {
         border-radius: 50%;
         position: absolute;
         left: 0;
+        top: 5px;
     }
 
     span {
         line-height: 20px;
         font-size: 14px;
+        font-style: italic;
     }
 
     img {
