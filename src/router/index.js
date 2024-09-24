@@ -66,6 +66,11 @@ const router = createRouter({
       name: "notes",
       component: () => import("../views/Notes.vue"),
     },
+    {
+      path: "/dictionary",
+      name: "dictionary",
+      component: () => import("../views/Dictionary.vue"),
+    },
   ],
 
   scrollBehavior(to, from, savedPosition) {

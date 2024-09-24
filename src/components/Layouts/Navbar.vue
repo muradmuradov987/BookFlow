@@ -39,8 +39,8 @@
                             <router-link to="/profile" class="profile__menu-link">
                                 Account
                             </router-link>
-                            <router-link to="/" class="profile__menu-link">
-                                Vacoblary
+                            <router-link to="/dictionary" class="profile__menu-link">
+                                Dictionary
                             </router-link>
                             <router-link to="/notes" class="profile__menu-link">
                                 Notes
