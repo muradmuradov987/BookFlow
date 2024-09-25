@@ -260,6 +260,15 @@ onMounted(() => {
                     border-radius: 8px;
                     padding: 10px 20px;
 
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #00c897;
+                        border-radius: 20px;
+                    }
+
                     &:focus {
                         box-shadow: none;
                         border: 1px solid #fe7f02;

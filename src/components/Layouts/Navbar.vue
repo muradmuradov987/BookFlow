@@ -20,7 +20,7 @@
                     <router-link to="/my-books" class="nav__items">
                         My books <span class="mybook__list" v-if="myStore.auth">({{ myStore.myBooks?.length }})</span>
                     </router-link>
-                    <router-link to="/" class="nav__items">
+                    <router-link to="/translate" class="nav__items">
                         Translate
                     </router-link>
                     <div class="social__network">
