@@ -5,6 +5,7 @@ import popularBooksData from "../stores/popularBooks.json";
 import trendBooksData from "../stores/trendBooks.json";
 import myBooksData from "../stores/myBooks.json";
 import myNotesData from "../stores/myNotes.json";
+import myDictionaryData from "../stores/myDictionary.json";
 
 export const useCounterStore = defineStore("counter", () => {
   ////////////////////////////STATE////////////////////////////////////////
@@ -15,6 +16,7 @@ export const useCounterStore = defineStore("counter", () => {
   const trendBooks = trendBooksData;
   const myBooks = myBooksData;
   const myNotes = myNotesData;
+  const myDictionary = myDictionaryData;
 
   const isModalVisible = false;
 
@@ -36,10 +38,10 @@ export const useCounterStore = defineStore("counter", () => {
   ////////
   ////////////////////////////ACTIONS////////////////////////////////////////
 
-  function closeModal(note) {
+  function closeModal() {
     this.modal.show = false;
     this.modal.title = "";
-    this.modal.noteName = note.noteName;
+    this.modal.name = '';
   }
 
   //////////////////////////////////////////////////////////////////////////
@@ -52,6 +54,7 @@ export const useCounterStore = defineStore("counter", () => {
     trendBooks,
     myBooks,
     myNotes,
+    myDictionary,
     isModalVisible,
     modal,
     //actions

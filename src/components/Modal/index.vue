@@ -2,7 +2,7 @@
     <div class="modal__backdrop" v-if="myStore.modal.show" @click="closeBackdrop">
         <div class="modal__container">
             <div class="modal__header">
-                <h5 class="modal__noteName">{{ myStore.modal.noteName }}</h5>
+                <h5 class="modal__noteName">{{ myStore.modal.name }}</h5>
             </div>
             <div class="modal__body">
                 <img class="closeBtn" src="@/assets/img/plugins/close.png" @click="myStore.closeModal" alt="">

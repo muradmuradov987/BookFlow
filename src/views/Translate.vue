@@ -15,10 +15,9 @@
                 <img src="@/assets/img/plugins/clear.png" @click="clear">
                 <textarea v-model="word" @keyup="debouncedTranslateText"></textarea>
             </div>
-
             <div class="output__container">
                 <div class="select">
-                    <select v-model="lang">
+                    <select v-model="lang" @change="translateText">
                         <option selected value="ru">Ru</option>
                         <option value="tr">Tr</option>
                         <option value="fr">Fr</option>
@@ -29,15 +28,27 @@
                 <div class="output">
                     {{ output }}
                     <img class="copy" v-if="output" src="@/assets/img/plugins/copy.png" @click="copy">
-                    <img class="star" v-if="output" src="@/assets/img/plugins/star.png" @click="copy">
-                    <div class="select__dictionary">
-                        <h3>Select dictionary</h3>
-                        <select name="" id="">
-                            <option value="">ss</option>
-                            <option value="">ss</option>
-                            <option value="">ss</option>
-                        </select>
-                        <Secondary>Add</Secondary>
+                    <img class="star" v-if="output" src="@/assets/img/plugins/star.png" @click="addToDictionaryList">
+                    <div class="select__dictionary" v-if="showDictionary && output">
+                        <img src="@/assets/img/plugins/close.png" @click="closeDictionaryList">
+                        <div v-if="myStore?.myDictionary.length == 0">
+                            <h3>Write dictionary name</h3>
+                            <input type="text" v-model="dictionaryName">
+                            <div class="validation__info" v-if="validationField.dictionaryTitle && !dictionaryName">
+                                Can't be empty</div>
+                        </div>
+                        <div v-if="myStore?.myDictionary.length">
+                            <h3>Select dictionary</h3>
+                            <select v-model="dictionarySelect" v-if="myStore?.myDictionary.length">
+                                <option value="" disabled selected hidden>Please Choose...</option>
+                                <option :value="item.id" v-for="item in myStore.myDictionary">{{ item?.dictionaryName }}
+                                </option>
+                            </select>
+                            <div class="validation__info" v-if="validationField.dictionarySelect && !dictionarySelect">
+                                Can't be empty</div>
+                        </div>
+
+                        <Secondary @click="saveDictionary">Add</Secondary>
                     </div>
                 </div>
             </div>
@@ -49,17 +60,34 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useCounterStore } from "@/stores/counter";
 import Breadcrumb from '@/components/UI/Breadcrumb.vue';
 import Secondary from '@/components/UI/Buttons/Secondary.vue';
 import debounce from 'lodash/debounce';
+import Swal from 'sweetalert2';
 
+const myStore = useCounterStore();
+
+
+const formattedDate = ref(null)
+
+function currentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    formattedDate.value = `${day}.${month}.${year}`;
+}
 
 const word = ref('')
 const output = ref('')
 const lang = ref('ru')
 
+
+
+const dictionaryName = ref('')
+const dictionarySelect = ref('')
 
 
 const translateText = async () => {
@@ -68,10 +96,13 @@ const translateText = async () => {
         return;
     }
     try {
+        dictionarySelect.value = ''
+        output.value = ''
         const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(word.value)}&langpair=en|${lang.value}`);
         const data = await response.json();
         if (data.responseStatus == 200) {
             output.value = data.responseData.translatedText;
+            showDictionary.value = false
         } else {
             output.value = ''
         }
@@ -80,21 +111,93 @@ const translateText = async () => {
     }
 };
 
-const debouncedTranslateText = debounce(translateText, 300);
+const debouncedTranslateText = debounce(translateText, 200,);
+
 
 function clear() {
     word.value = ''
+    showDictionary.value = false
+    dictionarySelect.value = ''
+    output.value = ''
 }
 
 function copy() {
     navigator.clipboard.writeText(output.value);
 }
 
+const validationField = ref({
+    dictionaryTitle: false,
+    dictionarySelect: false,
+})
+
+const showDictionary = ref(true)
+
+function addToDictionaryList() {
+    showDictionary.value = true
+}
+function closeDictionaryList() {
+    showDictionary.value = false
+    validationField.value.dictionarySelect = false;
+    validationField.value.dictionaryTitle = false;
+    dictionaryName.value = ''
+}
+
+function saveDictionary() {
+    if (myStore.myDictionary.length) {
+        if (!dictionarySelect.value) {
+            validationField.value.dictionarySelect = true;
+            return
+        } else {
+            let data = myStore.myDictionary.find(item => item.id == dictionarySelect.value)
+            data.dictionaryList.unshift({
+                id: new Date(),
+                input: word.value,
+                output: output.value
+            })
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "The dictionary added",
+                showConfirmButton: false,
+                timer: 1000
+            });
+            showDictionary.value = false
+        }
+    } else {
+        if (!dictionaryName.value) {
+            validationField.value.dictionaryTitle = true;
+            return
+        } else {
+            myStore.myDictionary.unshift({
+                id: new Date(),
+                dictionaryName: dictionaryName.value,
+                date: formattedDate.value,
+                dictionaryList: [{
+                    id: new Date(),
+                    input: word.value,
+                    output: output.value
+                }]
+            })
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "New dictionary created",
+                showConfirmButton: false,
+                timer: 1000
+            });
+            showDictionary.value = false
+            dictionaryName.value = ''
+        }
+    }
+}
+
 
 watch(word, debouncedTranslateText);
 
 
-
+onMounted(() => {
+    currentDate()
+})
 </script>
 
 <style lang="scss" scoped>
@@ -109,7 +212,7 @@ watch(word, debouncedTranslateText);
 
         textarea {
             width: 100%;
-            min-height: 150px;
+            min-height: 180px;
             margin-top: 50px;
             border: 1px solid #051367;
             border-radius: 8px;
@@ -175,7 +278,7 @@ watch(word, debouncedTranslateText);
         }
 
         .output {
-            min-height: 150px;
+            min-height: 180px;
             background: #c0c0c079;
             border-radius: 8px;
             padding: 10px 20px 30px 10px;
@@ -212,13 +315,13 @@ watch(word, debouncedTranslateText);
 
             .select__dictionary {
                 width: 200px;
-                height: 110px;
+                min-height: 120px;
                 background: #fff;
                 border-radius: 10px;
                 position: absolute;
-                top: 5px;
+                bottom: 45px;
                 right: 25px;
-                padding: 10px;
+                padding: 10px 15px;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -236,7 +339,7 @@ watch(word, debouncedTranslateText);
                 }
 
                 h3 {
-                    font-size: 18px;
+                    font-size: 14px;
                     font-weight: 700;
                     text-align: center;
                     line-height: 20px;
@@ -247,29 +350,82 @@ watch(word, debouncedTranslateText);
                     height: 25px;
                     padding: 0px 10px;
                     border-radius: 8px;
-                    font-size: 14px;
+                    font-size: 12px;
                     border: 1px solid #051367;
                     font-weight: 700;
+
                     &:focus {
                         border: 1px solid #fe7f02;
                     }
 
-                    &::placeholder {
-                        color: red !important;
-                    }
                     option {
                         color: #fe7f02;
                         font-size: 14px;
                     }
                 }
 
+                input {
+                    width: 100%;
+                    height: 25px;
+                    padding: 0px 10px;
+                    border-radius: 8px;
+                    font-size: 12px;
+                    border: 1px solid #051367;
+                    font-weight: 700;
+
+                    &:focus {
+                        border: 1px solid #fe7f02;
+                    }
+                }
+
+
                 button {
                     padding: 5px;
                     font-size: 14px;
                     font-weight: 700;
                 }
+
+                img {
+                    width: 15px;
+                    position: absolute;
+                    right: 5px;
+                    top: 5px;
+                    cursor: pointer;
+                }
             }
 
+        }
+    }
+
+    .validation__info {
+        color: red;
+        font-size: 12px;
+        padding: 3px;
+        line-height: 10px;
+    }
+}
+
+/*---------------Media Queries--------------*/
+@media (max-width: 767px) {
+    .translate__container {
+        flex-direction: column;
+        padding: 0;
+
+        .textarea {
+            width: 100%;
+        }
+
+        .output__container {
+            width: 100%;
+
+            .select {
+                text-align: end;
+                margin-bottom: 10px;
+
+                select {
+                    width: 25%;
+                }
+            }
         }
     }
 }

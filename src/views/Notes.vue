@@ -110,11 +110,10 @@ computed(()=>{
 function openNoteCard(note) {
     myStore.modal.show = true
     myStore.modal.title = 'noteCard'
-    myStore.modal.noteName = note.noteName
+    myStore.modal.name = note.noteName
     tempNoteData.value = note
 
 }
-
 
 const tempNoteData = ref(null)
 const note = ref('')
@@ -128,8 +127,6 @@ function addNote() {
 
 function deleteNote(id) {
     tempNoteData.value.notes = tempNoteData.value.notes.filter(item => item.id !== id)
-    console.log(id);
-
 }
 
 onMounted(() => {

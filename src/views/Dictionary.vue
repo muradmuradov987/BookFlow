@@ -1,10 +1,13 @@
 <template>
     <Modal>
-        <template #default v-if="myStore.modal.title === 'noteCard'">
-            <input class="noteInput" type="text" v-on:keyup.enter="addNote" v-model="note" placeholder="add note...">
-            <p v-if="!tempNoteData.notes.length">There is no note</p>
-            <div class="modalNote" v-for="item in tempNoteData?.notes" :key="item.id">
-                <span>{{ item.note }}</span>
+        <template #default v-if="myStore.modal.title === 'dictionaryCard'">
+            <!-- <input class="noteInput" type="text" v-on:keyup.enter="addNote" v-model="note" placeholder="add note..."> -->
+            <p v-if="!tempDictionaryData.dictionaryList.length">There is no dictionary list</p>
+            <div class="dictionary__list" v-for="item in tempDictionaryData.dictionaryList"
+                v-if="tempDictionaryData?.dictionaryList.length">
+                <p>{{ item.input }}</p>
+                <span>|</span>
+                <p>{{ item.output }}</p>
                 <img @click="deleteNote(item.id)" src="@/assets/img/plugins/trash.png" alt="">
             </div>
         </template>
@@ -26,28 +29,40 @@
     </section>
 
 
-    <!-- <div class="container">
-        <div class="addNote__container">
-            <input type="text" placeholder="Add book name or note title" v-on:keyup.enter="createNote" v-model="title">
+    <div class="container">
+        <div class="addDictionary__container">
+            <input type="text" placeholder="Add book name or dictionary title" v-on:keyup.enter="createDictionary"
+                v-model="dictionary">
         </div>
-        <section class="noteInfo" v-if="!myStore.myNotes.length">
-            <h3>No notes available. Please add some notes to get started!</h3>
+        <section class="dictionaryInfo" v-if="!myStore.myDictionary.length">
+            <h3>No dictionary available. Please add some dictionary to get started!</h3>
         </section>
-        <div class="note__container">
-            <div class="note" v-for="note in myStore.myNotes" :key="note.id" @click="openNoteCard(note)">
-                <h3 class="note__title">{{ note?.noteName }}</h3>
-                <div class="note__bottom">
-                    <span class="date">{{ note?.date }}</span>
-                    <img @click="deleteNoteCard(note.id)" src="@/assets/img/plugins/trash.png" alt="">
+        <div class="dictionary__container">
+            <div class="dictionary" @click="openDictionaryCard(dictionary)" v-for="dictionary in myStore.myDictionary"
+                :key="dictionary.id" :style="{ backgroundImage: getRandomColor() }">
+                <h3 class="dictionary__title">{{ dictionary?.dictionaryName }}</h3>
+                <div class="dictionary__view">
+                    <p class="dictionary__view-info" v-if="!dictionary?.dictionaryList.length">Dictionary list is
+                        empty...
+                    </p>
+                    <div v-for="item in dictionary.dictionaryList" v-if="dictionary?.dictionaryList.length">
+                        <p>{{ item.input }}</p>
+                        <span>|</span>
+                        <p>{{ item.output }}</p>
+                    </div>
+                </div>
+                <div class="dictionary__bottom">
+                    <span class="date">{{ dictionary?.date }}</span>
+                    <img @click="deleteDictionaryCard(dictionary.id)" src="@/assets/img/plugins/trash.png" alt="">
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 </template>
 
 <script setup>
-import { ref,computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import Breadcrumb from '@/components/UI/Breadcrumb.vue';
 import Modal from "@/components/Modal/index.vue";
 import Swal from 'sweetalert2';
@@ -55,9 +70,32 @@ import { useCounterStore } from "@/stores/counter";
 const myStore = useCounterStore();
 
 
-const title = ref('')
+const colors = [
+    'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(101,9,121,0.7) 35%, rgba(201,0,255,0.7) 100%)',
+    'linear-gradient(to top, #0f2027, #203a43, #2c5364)',
+    'linear-gradient(to top, #373b44, #4286f4)',
+    'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(126,142,41,0.7) 43%, rgba(123,176,4,0.7) 100%)',
+    'linear-gradient(to top, #200122, #6f0000)',
+    'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(153,0,0,0.7) 51%, rgba(190,11,78,0.7) 100%)',
+    'linear-gradient(to bottom, #00bf8f, #001510)',
+    'linear-gradient(to bottom, #870000, #190a05)',
+    'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.7) 35%, rgba(0,212,255,0.7) 100%)',
+    'linear-gradient(to bottom, #536976, #292e49)',
+    'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(6,120,107,0.7) 41%, rgba(0,194,255,0.7) 100%)',
+    'linear-gradient(to bottom, #780206, #061161)',
+];
+
+//Random Colors
+const getRandomColor = () => {
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+};
+
+
+let dictionary = ''
 const formattedDate = ref(null)
 
+//Set current date
 function currentDate() {
     const today = new Date();
     const year = today.getFullYear();
@@ -66,19 +104,20 @@ function currentDate() {
     formattedDate.value = `${day}.${month}.${year}`;
 }
 
-function createNote() {
-    let note = {
+//Create dictionary card
+function createDictionary() {
+    let dictionaryData = {
         "id": Date.now(),
-        "noteName": title.value,
+        "dictionaryName": dictionary,
         "date": formattedDate.value,
-        "notes": []
+        "dictionaryList": []
     }
-    myStore.myNotes.unshift(note)
-    title.value = ''
+    myStore.myDictionary.unshift(dictionaryData)
+    dictionary = ''
 }
 
-
-function deleteNoteCard(id) {
+//Delete dictionary card
+function deleteDictionaryCard(id) {
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -89,7 +128,7 @@ function deleteNoteCard(id) {
         confirmButtonText: "Yes, delete it!"
     }).then((result) => {
         if (result.isConfirmed) {
-            myStore.myNotes = myStore.myNotes.filter(item => item.id !== id)
+            myStore.myDictionary = myStore.myDictionary.filter(item => item.id !== id)
             Swal.fire({
                 title: "Deleted!",
                 text: "Your notes has been deleted.",
@@ -102,35 +141,22 @@ function deleteNoteCard(id) {
 
 }
 
+//Save temporary Dictionary Data
+const tempDictionaryData = ref(null)
 
-computed(()=>{
-    return 
-})
-
-function openNoteCard(note) {
+// Open Dictionary Card modal
+function openDictionaryCard(dictionary) {
     myStore.modal.show = true
-    myStore.modal.title = 'noteCard'
-    myStore.modal.noteName = note.noteName
-    tempNoteData.value = note
-
+    myStore.modal.title = 'dictionaryCard'
+    myStore.modal.name = dictionary.dictionaryName
+    tempDictionaryData.value = dictionary
 }
 
-
-const tempNoteData = ref(null)
-const note = ref('')
-function addNote() {
-    tempNoteData.value.notes.unshift({
-        id: Date.now(),
-        note: note.value
-    })
-    note.value = ''
-}
-
+// Delet Dictionary list
 function deleteNote(id) {
-    tempNoteData.value.notes = tempNoteData.value.notes.filter(item => item.id !== id)
-    console.log(id);
-
+    tempDictionaryData.value.dictionaryList = tempDictionaryData.value.dictionaryList.filter(item => item.id !== id)
 }
+
 
 onMounted(() => {
     currentDate()
@@ -140,7 +166,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.addNote__container {
+.addDictionary__container {
     margin-top: 20px;
     margin-bottom: 40px;
 
@@ -155,7 +181,7 @@ onMounted(() => {
     }
 }
 
-.noteInfo {
+.dictionaryInfo {
     height: 10vh;
 
     h3 {
@@ -163,14 +189,14 @@ onMounted(() => {
     }
 }
 
-.note__container {
+.dictionary__container {
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding-bottom: 70px;
 
-    .note {
+    .dictionary {
         max-width: 300px;
         width: 100%;
         background: #fff;
@@ -178,20 +204,72 @@ onMounted(() => {
         padding: 15px;
         border-radius: 10px;
         cursor: pointer;
+        transition: 0.3s ease;
 
-        .note__title {
+        &:hover {
+            transform: translate(0, -10px);
+        }
+
+        .dictionary__title {
             font-size: 18px;
             line-height: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: center;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            color: #fff;
         }
 
-        .note__bottom {
+        .dictionary__view {
+            height: 108px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            .dictionary__view-info {
+                color: #fff;
+                font-style: italic;
+                font-size: 14px;
+            }
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                border-bottom: 1px solid #fff;
+                padding: 3px;
+
+                span {
+                    color: #fff;
+                }
+
+                p {
+                    width: 50%;
+                    color: #fff;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 14px;
+
+                    &:nth-child(3) {
+                        text-align: end;
+                    }
+                }
+            }
+        }
+
+        .dictionary__bottom {
             display: flex;
             align-items: end;
             justify-content: space-between;
+
+            .date {
+                color: #fff;
+
+            }
 
             img {
                 width: 25px;
@@ -203,77 +281,141 @@ onMounted(() => {
     }
 }
 
-.noteInput {
-    width: 50%;
-    border-radius: 7px;
-    border: 1px solid #00c897;
-    outline: none;
-    padding: 5px;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
 
-.modalNote {
+
+.dictionary__list {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #051367;
+    padding: 8px;
     position: relative;
-    padding-left: 20px;
-    border-bottom: 1px solid #00c897;
-    margin-bottom: 15px;
 
-    &::before {
-        content: '';
-        width: 12px;
-        height: 12px;
-        background: #00c897;
-        border-radius: 50%;
-        position: absolute;
-        left: 0;
-        top: 5px;
-    }
+    p {
+        width: 50%;
+        font-size: 16px;
+        color: #00c897;
 
-    span {
-        line-height: 20px;
-        font-size: 14px;
-        font-style: italic;
+        &:nth-child(3) {
+            text-align: end;
+            padding-right: 25px;
+            color: #051367;
+            font-style: italic;
+        }
     }
 
     img {
+        position: absolute;
+        right: 0;
         width: 20px;
         cursor: pointer;
     }
 }
 
 
+
+
 /*---------------Media Queries--------------*/
-@media (max-width: 767px) {
-    .addNote__container {
+@media (max-width: 650px) {
+    .addDictionary__container {
         input {
             width: 100%;
         }
     }
 
-    .note__container {
-        .note {
+    .dictionary__container {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding-bottom: 70px;
+        .dictionary {
             max-width: unset;
-            width: 47%;
-            padding: 10px;
-            border-radius: 5px;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 0 10px 4px #817d79;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s ease;
 
-            .note__title {
-                font-size: 16px;
+            &:hover {
+                transform: translate(0, -10px);
             }
 
-            .note__bottom {
-                .edit {
-                    img {
-                        width: 20px;
+            .dictionary__title {
+                font-size: 18px;
+                line-height: 20px;
+                margin-bottom: 15px;
+                text-align: center;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                color: #fff;
+            }
+
+            .dictionary__view {
+                height: 108px;
+                overflow: hidden;
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                .dictionary__view-info {
+                    color: #fff;
+                    font-style: italic;
+                    font-size: 14px;
+                }
+
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 10px;
+                    border-bottom: 1px solid #fff;
+                    padding: 3px;
+
+                    span {
+                        color: #fff;
                     }
+
+                    p {
+                        width: 50%;
+                        color: #fff;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        font-size: 14px;
+
+                        &:nth-child(3) {
+                            text-align: end;
+                        }
+                    }
+                }
+            }
+
+            .dictionary__bottom {
+                display: flex;
+                align-items: end;
+                justify-content: space-between;
+
+                .date {
+                    color: #fff;
+
+                }
+
+                img {
+                    width: 25px;
+                    margin-left: 5px;
+                    cursor: pointer;
+                    position: relative;
                 }
             }
         }
     }
+
+
+
 }
 </style>

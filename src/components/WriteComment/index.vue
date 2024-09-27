@@ -85,6 +85,8 @@ const handleMouseLeave = () => {
 const handleClick = (value) => {
     rating.value = value;
 };
+
+
 function addReview() {
 
     if (myStore.auth) {
@@ -104,6 +106,8 @@ function addReview() {
         book.value.reviews.unshift(obj)
         rating.value = 0
         yourReview.value = ""
+
+
     } else {
         Swal.fire({
             title: 'Login Required!',
@@ -130,6 +134,8 @@ function selectTab(tab) {
 onMounted(() => {
     const routeId = parseInt(route.params.id)
     book.value = myStore.books.find(item => item.id === routeId)
+
+
 })
 
 

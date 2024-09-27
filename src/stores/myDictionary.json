@@ -1,0 +1,73 @@
+[
+    {
+        "id": 1,
+        "dictionaryName": "Siddhartha",
+        "date": "17.12.2024",
+        "dictionaryList": [
+            {
+                "id": 1,
+                "input": "Level",
+                "output": "Уровень"
+            },
+            {
+                "id": 2,
+                "input": "Dictionary",
+                "output": "словарь "
+            },
+            {
+                "id": 3,
+                "input": "House",
+                "output": "дом"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "dictionaryName": "Love for a Deaf Rebel",
+        "date": "10.03.2024",
+        "dictionaryList": [
+            {
+                "id": 1,
+                "input": "Author ",
+                "output": "Yazar"
+            },
+            {
+                "id": 2,
+                "input": "map ",
+                "output": "harita "
+            },
+            {
+                "id": 3,
+                "input": " Account ",
+                "output": "Hesap "
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "dictionaryName": "Breadcrumbs",
+        "date": "01.11.2024",
+        "dictionaryList": [
+            {
+                "id": 1,
+                "input": "Customer   ",
+                "output": "Auftraggeber "
+            },
+            {
+                "id": 2,
+                "input": "free ",
+                "output": "kostenlos "
+            },
+            {
+                "id": 3,
+                "input": "Book ",
+                "output": "Buch "
+            },
+            {
+                "id": 4,
+                "input": "Brands  ",
+                "output": "Marken "
+            }
+        ]
+    }
+]
