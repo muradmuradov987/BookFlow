@@ -111,7 +111,7 @@ const translateText = async () => {
     }
 };
 
-const debouncedTranslateText = debounce(translateText, 200,);
+const debouncedTranslateText = debounce(translateText, 100,);
 
 
 function clear() {
@@ -140,6 +140,7 @@ function closeDictionaryList() {
     validationField.value.dictionarySelect = false;
     validationField.value.dictionaryTitle = false;
     dictionaryName.value = ''
+    dictionarySelect.value = ''
 }
 
 function saveDictionary() {

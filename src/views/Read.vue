@@ -49,7 +49,6 @@
                                             v-if="validationField.dictionarySelect && !dictionarySelect">
                                             Can't be empty</div>
                                     </div>
-
                                     <Secondary @click="saveDictionary">Add</Secondary>
                                 </div>
                             </div>
@@ -151,6 +150,7 @@ function closeDictionaryList() {
     validationField.value.dictionarySelect = false;
     validationField.value.dictionaryTitle = false;
     dictionaryName.value = ''
+    dictionarySelect.value = ''
 }
 
 function saveDictionary() {
@@ -173,6 +173,7 @@ function saveDictionary() {
                 timer: 1000
             });
             showDictionary.value = false
+            dictionarySelect.value = ''
         }
     } else {
         if (!dictionaryName.value) {
@@ -198,6 +199,8 @@ function saveDictionary() {
             });
             showDictionary.value = false
             dictionaryName.value = ''
+            dictionarySelect.value = ''
+
         }
     }
 }

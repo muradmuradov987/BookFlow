@@ -36,7 +36,7 @@
                     <img src="../../assets/img/plugins/user.png" alt="ss">
                     <div class="profile__menu-container">
                         <div class="profile__menu">
-                            <router-link to="/profile" class="profile__menu-link">
+                            <router-link to="/account" class="profile__menu-link">
                                 Account
                             </router-link>
                             <router-link to="/dictionary" class="profile__menu-link">

@@ -2,12 +2,12 @@
     <div>
         <Breadcrumb>
             <template #title>
-               Profile
+                Account
             </template>
             <template #breadcrumbs>
                 <router-link to="/" class="breadcrumbs__link">Home</router-link> <img
-                    src="@/assets/img/plugins/right-arrow.png" alt=""> <router-link to="/profile"
-                    class="breadcrumbs__link">Profile</router-link>
+                    src="@/assets/img/plugins/right-arrow.png" alt=""> <router-link to="/account"
+                    class="breadcrumbs__link">Account</router-link>
             </template>
         </Breadcrumb>
     </div>

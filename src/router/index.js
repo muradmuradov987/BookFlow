@@ -10,11 +10,6 @@ const router = createRouter({
       component: () => import("../views/HomeView.vue"),
     },
     {
-      path: "/about",
-      name: "about",
-      component: () => import("../views/AboutView.vue"),
-    },
-    {
       path: "/login",
       name: "login",
       component: () => import("../views/Profile/Login.vue"),
@@ -30,8 +25,8 @@ const router = createRouter({
       component: () => import("../views/Profile/Register/index.vue"),
     },
     {
-      path: "/profile",
-      name: "profile",
+      path: "/account",
+      name: "account",
       component: () => import("../views/Profile/Account/index.vue"),
     },
     {

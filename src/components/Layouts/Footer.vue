@@ -16,35 +16,48 @@
                         <h5>support@example.com</h5>
                     </div>
                 </div>
-                <img class="live__chat" src="@/assets/img/live__chat.png" alt="">
-
+                <div class="follow_us">
+                    <h3>Follow us</h3>
+                    <div class="social__media">
+                        <a href="">
+                            <img src="@/assets/img/social-media/facebook.png" alt="">
+                            Facebook
+                        </a>
+                        <a href="">
+                            <img src="@/assets/img/social-media/instagram.png" alt="">
+                            Instagram
+                        </a>
+                        <a href="">
+                            <img src="@/assets/img/social-media/twitter.png" alt="">
+                            Twitter
+                        </a>
+                        <a href="">
+                            <img src="@/assets/img/social-media/youtube.png" alt="">
+                            Youtube
+                        </a>
+                    </div>
+                </div>
 
                 <div class="footer__bottom">
                     <div class="information">
                         <h5>Information</h5>
                         <p>About Us</p>
-                        <p>Delivery Information</p>
+                        <p>Ebook Information</p>
                         <p>Privacy Policy</p>
                         <p>Terms & Conditions</p>
                     </div>
                     <div class="customer">
-                        <h5>Customer</h5>
+                        <h5>Readers</h5>
                         <p>Contact Us</p>
                         <p>Returns</p>
                         <p>Site Map</p>
                     </div>
-                    <div class="extras">
-                        <h5>Extras</h5>
-                        <p>Brands</p>
-                        <p>Gift Vouchers</p>
-                        <p>Affiliates</p>
-                        <p>Specials</p>
-                    </div>
+
                     <div class="my__account">
                         <h5>My Account</h5>
                         <p>My Account</p>
-                        <p>Order History</p>
-                        <p>Wish List</p>
+                        <p>Book History</p>
+                        <p>My books </p>
                         <p>Newsletter</p>
                     </div>
                 </div>
@@ -52,7 +65,7 @@
         </div>
         <hr />
         <div class="container nocopy">
-            <p >Powered By Vue BookStore © 2024</p>
+            <p>Powered By Vue BookStore © 2024</p>
         </div>
     </footer>
 </template>
@@ -96,9 +109,38 @@ footer {
             }
         }
 
-        .live__chat {
+        .follow_us {
             width: 100%;
             height: 100px;
+            background: linear-gradient(to top, #fc4a1a, #f7b733);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            h3 {
+                color: #fff;
+                text-align: center;
+                font-size: 25px;
+            }
+
+            .social__media {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                a {
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    img {
+                        width: 30px;
+                    }
+                }
+
+            }
         }
 
         .footer__bottom {
@@ -108,7 +150,6 @@ footer {
 
             .information,
             .customer,
-            .extras,
             .my__account {
 
                 h5 {
@@ -134,12 +175,12 @@ footer {
 
     }
 
-.nocopy{
-    p{
-        padding: 15px 0;
-        font-weight: 700;
+    .nocopy {
+        p {
+            padding: 15px 0;
+            font-weight: 700;
+        }
     }
-}
 
 }
 
@@ -154,10 +195,17 @@ footer {
                 gap: 10px;
             }
 
-            .live__chat {
-                width: 100%;
-                min-height: 40px;
-                height: 100%;
+            .follow_us {
+                padding: 10px;
+                height: 140px;
+                .social__media {
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    a {
+                        width: 45%;
+                    }
+
+                }
             }
 
             .footer__bottom {

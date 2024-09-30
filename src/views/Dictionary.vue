@@ -1,8 +1,12 @@
 <template>
     <Modal>
         <template #default v-if="myStore.modal.title === 'dictionaryCard'">
-            <!-- <input class="noteInput" type="text" v-on:keyup.enter="addNote" v-model="note" placeholder="add note..."> -->
-            <p v-if="!tempDictionaryData.dictionaryList.length">There is no dictionary list</p>
+            <div class="modal__nav">
+                <input class="noteInput" type="text" v-model="word" placeholder="add word...">
+                <input class="noteInput" type="text" v-model="translate" placeholder="add translate...">
+                <Secondary @click="addNewWord">Add word</Secondary>
+            </div>
+            <p v-if="!tempDictionaryData?.dictionaryList.length">There is no dictionary list</p>
             <div class="dictionary__list" v-for="item in tempDictionaryData.dictionaryList"
                 v-if="tempDictionaryData?.dictionaryList.length">
                 <p>{{ item.input }}</p>
@@ -37,7 +41,8 @@
         <section class="dictionaryInfo" v-if="!myStore.myDictionary.length">
             <h3>No dictionary available. Please add some dictionary to get started!</h3>
         </section>
-        <div class="dictionary__container">
+
+        <!-- <div class="dictionary__container">
             <div class="dictionary" @click="openDictionaryCard(dictionary)" v-for="dictionary in myStore.myDictionary"
                 :key="dictionary.id" :style="{ backgroundImage: getRandomColor() }">
                 <h3 class="dictionary__title">{{ dictionary?.dictionaryName }}</h3>
@@ -53,10 +58,37 @@
                 </div>
                 <div class="dictionary__bottom">
                     <span class="date">{{ dictionary?.date }}</span>
-                    <img @click="deleteDictionaryCard(dictionary.id)" src="@/assets/img/plugins/trash.png" alt="">
+                    <img @click="deleteDictionaryCard(dictionary.id, $event)" src="@/assets/img/plugins/trash.png"
+                        alt="">
                 </div>
             </div>
-        </div>
+        </div> -->
+
+
+        <draggable class="dictionary__container" :list="myStore.myDictionary" item-key="id">
+            <template #item="{ element: dictionary }">
+                <div class="dictionary" @click="openDictionaryCard(dictionary)"
+                    :style="{ backgroundImage: getRandomColor() }">
+                    <h3 class="dictionary__title">{{ dictionary?.dictionaryName }}</h3>
+                    <div class="dictionary__view">
+                        <p class="dictionary__view-info" v-if="!dictionary?.dictionaryList.length">Dictionary list is
+                            empty...
+                        </p>
+                        <div v-for="item in dictionary.dictionaryList" v-if="dictionary?.dictionaryList.length">
+                            <p>{{ item.input }}</p>
+                            <span>|</span>
+                            <p>{{ item.output }}</p>
+                        </div>
+                    </div>
+                    <div class="dictionary__bottom">
+                        <span class="date">{{ dictionary?.date }}</span>
+                        <img @click="deleteDictionaryCard(dictionary.id, $event)" src="@/assets/img/plugins/trash.png"
+                            alt="">
+                    </div>
+                </div>
+
+            </template>
+        </draggable>
     </div>
 
 </template>
@@ -65,7 +97,9 @@
 import { ref, onMounted } from 'vue'
 import Breadcrumb from '@/components/UI/Breadcrumb.vue';
 import Modal from "@/components/Modal/index.vue";
+import Secondary from "@/components/UI/Buttons/Secondary.vue";
 import Swal from 'sweetalert2';
+import draggable from 'vuedraggable';
 import { useCounterStore } from "@/stores/counter";
 const myStore = useCounterStore();
 
@@ -93,6 +127,7 @@ const getRandomColor = () => {
 
 
 let dictionary = ''
+
 const formattedDate = ref(null)
 
 //Set current date
@@ -117,7 +152,8 @@ function createDictionary() {
 }
 
 //Delete dictionary card
-function deleteDictionaryCard(id) {
+function deleteDictionaryCard(id, e) {
+    e.stopPropagation()
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -131,7 +167,7 @@ function deleteDictionaryCard(id) {
             myStore.myDictionary = myStore.myDictionary.filter(item => item.id !== id)
             Swal.fire({
                 title: "Deleted!",
-                text: "Your notes has been deleted.",
+                text: "Your dictionary has been deleted.",
                 icon: "success"
             });
         }
@@ -152,11 +188,28 @@ function openDictionaryCard(dictionary) {
     tempDictionaryData.value = dictionary
 }
 
+const word = ref('')
+const translate = ref('')
+
+function addNewWord() {
+    if (word.value || translate.value) {
+        tempDictionaryData.value.dictionaryList.unshift({
+            id: new Date(),
+            input: word.value,
+            output: translate.value
+        })
+        word.value = ''
+        translate.value = ''
+    } else {
+        return
+    }
+}
+
+
 // Delet Dictionary list
 function deleteNote(id) {
     tempDictionaryData.value.dictionaryList = tempDictionaryData.value.dictionaryList.filter(item => item.id !== id)
 }
-
 
 onMounted(() => {
     currentDate()
@@ -195,7 +248,6 @@ onMounted(() => {
     flex-wrap: wrap;
     gap: 20px;
     padding-bottom: 70px;
-
     .dictionary {
         max-width: 300px;
         width: 100%;
@@ -282,6 +334,25 @@ onMounted(() => {
 }
 
 
+.modal__nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    input {
+        height: 25px;
+        border-radius: 7px;
+        border: 1px solid #00c897;
+        outline: none;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 5px;
+        font-size: 14px;
+    }
+}
 
 .dictionary__list {
     display: flex;
@@ -330,6 +401,7 @@ onMounted(() => {
         flex-wrap: wrap;
         gap: 20px;
         padding-bottom: 70px;
+
         .dictionary {
             max-width: unset;
             width: 100%;
@@ -412,6 +484,29 @@ onMounted(() => {
                     position: relative;
                 }
             }
+        }
+    }
+
+
+    .modal__nav {
+        flex-wrap: wrap;
+        justify-content: unset;
+        gap: 10px;
+
+        input {
+            width: 45%;
+            height: 25px;
+            border-radius: 7px;
+            border: 1px solid #00c897;
+            outline: none;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 25%;
+            padding: 5px;
+            font-size: 14px;
         }
     }
 

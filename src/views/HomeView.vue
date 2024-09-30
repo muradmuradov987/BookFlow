@@ -66,7 +66,7 @@
                     <img src="@/assets/img/plugins/icon-newsletter.png" alt="" />
                     <div class="subscribe__text">
                         <h4>Subscribe to our newsletter</h4>
-                        <p>Sign up to get discount for next order</p>
+                        <p>Stay up to date with new books</p>
                     </div>
                 </div>
 

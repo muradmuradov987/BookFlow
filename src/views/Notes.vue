@@ -2,7 +2,7 @@
     <Modal>
         <template #default v-if="myStore.modal.title === 'noteCard'">
             <input class="noteInput" type="text" v-on:keyup.enter="addNote" v-model="note" placeholder="add note...">
-            <p v-if="!tempNoteData.notes.length">There is no note</p>
+            <p v-if="!tempNoteData?.notes.length">There is no note</p>
             <div class="modalNote" v-for="item in tempNoteData?.notes" :key="item.id">
                 <span>{{ item.note }}</span>
                 <img @click="deleteNote(item.id)" src="@/assets/img/plugins/trash.png" alt="">
@@ -33,26 +33,32 @@
         <section class="noteInfo" v-if="!myStore.myNotes.length">
             <h3>No notes available. Please add some notes to get started!</h3>
         </section>
-        <div class="note__container">
-            <div class="note" v-for="note in myStore.myNotes" :key="note.id" @click="openNoteCard(note)">
-                <h3 class="note__title">{{ note?.noteName }}</h3>
-                <div class="note__bottom">
-                    <span class="date">{{ note?.date }}</span>
-                    <img @click="deleteNoteCard(note.id)" src="@/assets/img/plugins/trash.png" alt="">
-                </div>
-            </div>
+        <div>
+            <draggable class="note__container" :list="myStore.myNotes" item-key="id">
+                <template #item="{ element: note }">
+                    <div class="note" @click="openNoteCard(note)">
+                        <h3 class="note__title">{{ note?.noteName }}</h3>
+                        <div class="note__bottom">
+                            <span class="date">{{ note?.date }}</span>
+                            <img @click="deleteNoteCard(note.id, $event)" src="@/assets/img/plugins/trash.png" alt="">
+                        </div>
+                    </div>
+                </template>
+            </draggable>
         </div>
     </div>
 
 </template>
 
 <script setup>
-import { ref,computed, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import Breadcrumb from '@/components/UI/Breadcrumb.vue';
 import Modal from "@/components/Modal/index.vue";
 import Swal from 'sweetalert2';
+import draggable from 'vuedraggable';
 import { useCounterStore } from "@/stores/counter";
 const myStore = useCounterStore();
+
 
 
 const title = ref('')
@@ -78,7 +84,8 @@ function createNote() {
 }
 
 
-function deleteNoteCard(id) {
+function deleteNoteCard(id, e) {
+    e.stopPropagation()
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -103,8 +110,8 @@ function deleteNoteCard(id) {
 }
 
 
-computed(()=>{
-    return 
+computed(() => {
+    return
 })
 
 function openNoteCard(note) {

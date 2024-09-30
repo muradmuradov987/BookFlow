@@ -17,7 +17,9 @@
                 <div class="search__box-container">
                     <input type="text" placeholder="search book..." v-model="searchQuery"
                         :class="{ activeSearch: filteredBooks.length > 0 }" />
-                    <div class="search__result" v-if="filteredBooks.length > 0">
+                    <img v-if="filteredBooks.length > 0" class="removeSearch" @click="removeSearch"
+                        src="@/assets/img/plugins/close.png" alt="">
+                    <div class="search__result" v-if="filteredBooks?.length > 0">
                         <RouterLink class="result__book" v-for="item in filteredBooks" :key="item.id"
                             :to="{ name: 'book-detail', params: { id: item.id } }">
                             <div class="book__item">
@@ -56,6 +58,10 @@ const navigateToLevel = (level) => {
 };
 
 const searchQuery = ref('');
+
+function removeSearch() {
+    searchQuery.value = ''
+}
 
 
 const filteredBooks = computed(() => {
@@ -173,8 +179,16 @@ watch(() => route.params.id, (newId) => {
                 transition: 0.5s ease;
                 outline: none;
                 padding: 20px;
+                padding-right: 40px;
                 font-size: 16px;
+            }
 
+            .removeSearch {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 20px;
+                cursor: pointer;
             }
 
             .activeSearch {
