@@ -3,7 +3,8 @@
         <nav>
             <router-link to="/">
                 <div class="logo">
-                    <img src="@/assets/img/logo.png" alt="" />
+                    <img src="@/assets/img/logo.webp" alt="" />
+                    <h1>Book<span>Flow</span></h1>
                 </div>
             </router-link>
 
@@ -82,12 +83,26 @@ nav {
     padding: 20px 0px;
 
     .logo {
-        width: 100px;
-        height: 80px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        h1 {
+            font-size: 20px;
+            color: #00c897;
+
+            span {
+
+                color: #fe7f02
+            }
+        }
 
         img {
-            width: 100%;
-            height: 100%;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+
+            object-fit: cover;
         }
     }
 
@@ -214,8 +229,13 @@ nav {
         padding: 20px 0px;
 
         .logo {
-            width: 60px;
-            height: 45px;
+            h1{
+                font-size: 16px;
+            }
+            img {
+                width: 45px;
+                height: 45px;
+            }
         }
 
         .navbar__menu {

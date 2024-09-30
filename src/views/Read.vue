@@ -26,7 +26,7 @@
                             <div class="output">
                                 {{ output }}
                                 <img class="copy" v-if="output" src="@/assets/img/plugins/copy.png" @click="copy">
-                                <img class="star" v-if="output" src="@/assets/img/plugins/star.png"
+                                <img class="star" v-if="output && myStore.auth" src="@/assets/img/plugins/star.png"
                                     @click="addToDictionaryList">
                                 <div class="select__dictionary" v-if="showDictionary && output">
                                     <img src="@/assets/img/plugins/close.png" @click="closeDictionaryList">
@@ -230,54 +230,70 @@ const noteSelect = ref('')
 const note = ref('')
 
 function saveNote() {
-    if (!myStore.myNotes.length) {
-        const isNoteTitleEmpty = !noteTitle.value
-        const isNoteEmpty = !note.value
-        if (isNoteTitleEmpty || isNoteEmpty) {
-            validationField.value.noteTitle = isNoteTitleEmpty;
-            validationField.value.note = isNoteEmpty;
-            return;
-        }
-        myStore.myNotes.unshift({
-            id: new Date(),
-            noteName: noteTitle.value,
-            date: formattedDate.value,
-            notes: [{
+    if (myStore.auth) {
+        if (!myStore.myNotes.length) {
+            const isNoteTitleEmpty = !noteTitle.value
+            const isNoteEmpty = !note.value
+            if (isNoteTitleEmpty || isNoteEmpty) {
+                validationField.value.noteTitle = isNoteTitleEmpty;
+                validationField.value.note = isNoteEmpty;
+                return;
+            }
+            myStore.myNotes.unshift({
+                id: new Date(),
+                noteName: noteTitle.value,
+                date: formattedDate.value,
+                notes: [{
+                    id: new Date(),
+                    note: note.value
+                }]
+            })
+
+            resetFields();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "The note added",
+                showConfirmButton: false,
+                timer: 1000
+            });
+
+        } else {
+            const isNoteSelectEmpty = !noteSelect.value
+            const isNoteEmpty = !note.value
+            if (isNoteSelectEmpty || isNoteEmpty) {
+                validationField.value.noteSelect = isNoteSelectEmpty;
+                validationField.value.note = isNoteEmpty;
+                return;
+            }
+            const selectedNote = myStore.myNotes.find(item => item.id === noteSelect.value)
+            selectedNote.notes.unshift({
                 id: new Date(),
                 note: note.value
-            }]
-        })
+            })
 
-        resetFields();
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "The note added",
-            showConfirmButton: false,
-            timer: 1000
-        });
-
-    } else {
-        const isNoteSelectEmpty = !noteSelect.value
-        const isNoteEmpty = !note.value
-        if (isNoteSelectEmpty || isNoteEmpty) {
-            validationField.value.noteSelect = isNoteSelectEmpty;
-            validationField.value.note = isNoteEmpty;
-            return;
+            resetFields();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "The note added",
+                showConfirmButton: false,
+                timer: 1000
+            });
         }
-        const selectedNote = myStore.myNotes.find(item => item.id === noteSelect.value)
-        selectedNote.notes.unshift({
-            id: new Date(),
-            note: note.value
-        })
-
-        resetFields();
+    } else {
         Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "The note added",
-            showConfirmButton: false,
-            timer: 1000
+            title: 'Login Required!',
+            text: 'Please log in to access for write comment',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#00c897',
+            confirmButtonText: 'Go to Login',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: 'red',
+            preConfirm: () => {
+                window.location.href = '/login';
+            }
         });
     }
 }

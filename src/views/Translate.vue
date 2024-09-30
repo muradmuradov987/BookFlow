@@ -28,8 +28,8 @@
                 <div class="output">
                     {{ output }}
                     <img class="copy" v-if="output" src="@/assets/img/plugins/copy.png" @click="copy">
-                    <img class="star" v-if="output" src="@/assets/img/plugins/star.png" @click="addToDictionaryList">
-                    <div class="select__dictionary" v-if="showDictionary && output">
+                    <img class="star" v-if="output && myStore.auth" src="@/assets/img/plugins/star.png" @click="addToDictionaryList">
+                    <div class="select__dictionary" v-if="showDictionary && output  ">
                         <img src="@/assets/img/plugins/close.png" @click="closeDictionaryList">
                         <div v-if="myStore?.myDictionary.length == 0">
                             <h3>Write dictionary name</h3>
@@ -37,7 +37,7 @@
                             <div class="validation__info" v-if="validationField.dictionaryTitle && !dictionaryName">
                                 Can't be empty</div>
                         </div>
-                        <div v-if="myStore?.myDictionary.length">
+                        <div v-if="myStore?.myDictionary.length ">
                             <h3>Select dictionary</h3>
                             <select v-model="dictionarySelect" v-if="myStore?.myDictionary.length">
                                 <option value="" disabled selected hidden>Please Choose...</option>

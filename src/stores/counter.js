@@ -9,7 +9,7 @@ import myDictionaryData from "../stores/myDictionary.json";
 
 export const useCounterStore = defineStore("counter", () => {
   ////////////////////////////STATE////////////////////////////////////////
-  const auth = ref(true);
+  const auth = ref(false);
 
   const books = booksData;
   const popularBooks = popularBooksData;
